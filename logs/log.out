@@ -914,3 +914,225 @@ DEBUG- 2018-06-14 11:17:49.202038 >> System Started
 DEBUG- 2018-06-14 11:18:08.366663 >> System Started
 DEBUG- 2018-06-14 11:26:47.530833 >> System Started
 DEBUG- 2018-06-14 11:27:01.427047 >> System Started
+DEBUG- 2018-06-18 09:27:21.038184 >> System Started
+ INFO- 2018-06-18 09:28:20.889104 >> Zachary Andrews: @mybot
+ INFO- 2018-06-18 09:28:21.082277 >> MyBot: Hi, @Zachary Andrews what would you like?
+ INFO- 2018-06-18 09:32:46.080453 >> Zachary Andrews: @mybot whats the weather?
+ INFO- 2018-06-18 09:32:46.671649 >> MyBot: The weather is currently: Clear Temperature: 79° Humidity: 88%
+ INFO- 2018-06-18 09:32:56.645111 >> Zachary Andrews: @mybot whats the time
+ INFO- 2018-06-18 09:32:56.839484 >> MyBot: The time is currently: 09:32:56.645373
+DEBUG- 2018-06-19 09:10:02.014322 >> KeyboardInterrupt
+DEBUG- 2018-06-19 09:10:04.057632 >> System Shutdown
+DEBUG- 2018-06-19 09:10:05.497203 >> System Started
+ INFO- 2018-06-19 09:10:32.445814 >> Zachary Andrews: @mybot create event: test, test, test
+DEBUG- 2018-06-19 09:20:18.132621 >> System Started
+ INFO- 2018-06-19 09:20:37.012484 >> Zachary Andrews: @mybot create event: test, tets, test
+Error: 
+Traceback (most recent call last):
+  File "/home/zach/groupmeBot/testBot.py", line 199, in analyze_message
+    date[2] = '20'+date[2]
+IndexError: list index out of range
+DEBUG- 2018-06-19 09:21:28.515035 >> System Started
+ INFO- 2018-06-19 09:21:40.471386 >> Zachary Andrews: @mybot create event: test, test, test
+Error: 
+Traceback (most recent call last):
+  File "/home/zach/groupmeBot/testBot.py", line 199, in analyze_message
+    date[2] = '20'+date[2]
+IndexError: list index out of range
+ INFO- 2018-06-19 09:21:40.654096 >> MyBot: An error occurred, check the format of the command
+DEBUG- 2018-06-19 09:28:51.994758 >> KeyboardInterrupt
+DEBUG- 2018-06-19 09:28:53.397426 >> System Shutdown
+DEBUG- 2018-06-19 09:31:51.056219 >> System Started
+DEBUG- 2018-06-19 09:31:52.343998 >> KeyboardInterrupt
+DEBUG- 2018-06-19 09:31:55.786701 >> System Shutdown
+DEBUG- 2018-06-19 09:36:02.297036 >> System Started
+ INFO- 2018-06-19 09:36:20.028948 >> Zachary Andrews: @mybot create event: test, test, test
+ INFO- 2018-06-19 09:36:20.210047 >> MyBot: An error occurred, check the format of the command
+ INFO- 2018-06-19 09:36:59.454592 >> Zachary Andrews: @mybot create event: test, test, test
+ INFO- 2018-06-19 09:36:59.621641 >> MyBot: An error occurred, check the format of the command
+DEBUG- 2018-06-19 09:38:01.896974 >> KeyboardInterrupt
+DEBUG- 2018-06-19 09:38:03.910185 >> System Shutdown
+DEBUG- 2018-06-19 09:38:05.093320 >> System Started
+ INFO- 2018-06-19 09:38:16.140402 >> Zachary Andrews: @mybot create event: test, test, test
+ INFO- 2018-06-19 09:38:16.348138 >> MyBot: An error occurred, check the format of the command
+DEBUG- 2018-06-19 09:38:42.817632 >> KeyboardInterrupt
+DEBUG- 2018-06-19 09:38:45.396778 >> System Shutdown
+DEBUG- 2018-06-19 09:38:53.530731 >> System Started
+ INFO- 2018-06-19 09:39:03.636919 >> Zachary Andrews: @mybot create event: test, test, test
+ INFO- 2018-06-19 09:39:03.820076 >> MyBot: An error occurred, check the format of the command
+DEBUG- 2018-06-19 09:50:50.247195 >> KeyboardInterrupt
+DEBUG- 2018-06-19 09:50:51.728241 >> System Shutdown
+DEBUG- 2018-06-19 09:50:52.723093 >> System Started
+DEBUG- 2018-06-19 09:51:19.250372 >> System Started
+ INFO- 2018-06-19 09:51:28.157647 >> Zachary Andrews: @mybot list events
+ INFO- 2018-06-19 09:51:28.344356 >> MyBot: Events Today: None Events:  -- 6/8/2018, test, test -- 6/8/2018, test3, test 
+DEBUG- 2018-06-19 10:00:32.827420 >> KeyboardInterrupt
+DEBUG- 2018-06-19 10:00:34.264686 >> System Shutdown
+DEBUG- 2018-06-19 11:00:07.007138 >> System Started
+DEBUG- 2018-06-19 11:00:07.007501 >> deleted: 6/8/2018, test, test 
+ INFO- 2018-06-19 11:00:34.738364 >> Zachary Andrews: @mybot list reminders
+ INFO- 2018-06-19 11:00:34.941944 >> MyBot: Reminders:  -- wednesday: wear it wednesday- wear your letters 
+ INFO- 2018-06-19 11:00:52.020493 >> Zachary Andrews: @mybot list events
+ INFO- 2018-06-19 11:00:52.211083 >> MyBot: Events Today: None Events:  -- 6/8/2018, test3, test 
+DEBUG- 2018-06-19 11:01:42.628762 >> KeyboardInterrupt
+DEBUG- 2018-06-19 11:01:44.183182 >> System Shutdown
+DEBUG- 2018-06-19 11:01:46.583822 >> System Started
+ INFO- 2018-06-19 11:02:15.430396 >> Zachary Andrews: @mybot list events
+ INFO- 2018-06-19 11:02:15.600720 >> MyBot: Events Today: None Events:  None
+ INFO- 2018-06-19 11:02:51.752146 >> Zachary Andrews: @mybot list reminders
+ INFO- 2018-06-19 11:02:51.932304 >> MyBot: Reminders:  -- wednesday: wear it wednesday- wear your letters 
+DEBUG- 2018-06-19 11:06:21.902491 >> KeyboardInterrupt
+DEBUG- 2018-06-19 11:06:23.241946 >> System Shutdown
+DEBUG- 2018-06-19 11:06:24.392901 >> System Started
+DEBUG- 2018-06-19 11:06:25.848927 >> KeyboardInterrupt
+DEBUG- 2018-06-19 11:06:28.851499 >> System Shutdown
+DEBUG- 2018-06-19 11:06:43.705492 >> System Started
+ INFO- 2018-06-19 11:06:59.971234 >> Zachary Andrews: @mybot create event: 6/8/18, test, test
+ INFO- 2018-06-19 11:07:00.166839 >> MyBot: Okay, I made an event: 8/6/2018, test, test
+DEBUG- 2018-06-19 11:07:07.379291 >> KeyboardInterrupt
+DEBUG- 2018-06-19 11:07:10.448572 >> System Shutdown
+DEBUG- 2018-06-19 11:07:14.700015 >> System Started
+ INFO- 2018-06-19 11:07:43.373180 >> Zachary Andrews: @mybot list events
+ INFO- 2018-06-19 11:07:43.562812 >> MyBot: Events Today: None Events:  -- 8/6/2018, test, test 
+DEBUG- 2018-06-19 11:09:21.199356 >> KeyboardInterrupt
+DEBUG- 2018-06-19 11:09:23.576984 >> System Shutdown
+DEBUG- 2018-06-19 11:09:25.204104 >> System Started
+ INFO- 2018-06-19 11:09:32.560558 >> Zachary Andrews: @mybot list events
+ INFO- 2018-06-19 11:09:32.756573 >> MyBot: Events Today: None Events:  -- 6/8/2018, test, test
+ INFO- 2018-06-19 11:09:49.300487 >> Zachary Andrews: @mybot create event: 6/8/18, test2, test2
+ INFO- 2018-06-19 11:09:49.488880 >> MyBot: Okay, I made an event: 6/8/2018, test2, test2
+ INFO- 2018-06-19 11:11:18.905767 >> Zachary Andrews: @mybot create event: 6/7/2018, test3, test3
+DEBUG- ERROR OCCURRED, CHECK ERROR LOG
+ INFO- 2018-06-19 11:11:19.096695 >> MyBot: An error occurred, check the format of the command
+ INFO- 2018-06-19 11:12:54.522161 >> Zachary Andrews: @mybot create event: 6/7/18, test3, test3
+ INFO- 2018-06-19 11:12:54.698807 >> MyBot: Okay, I made an event: 6/7/2018, test3, test3
+ INFO- 2018-06-19 11:13:10.455117 >> Zachary Andrews: @mybot list events
+ INFO- 2018-06-19 11:13:10.679862 >> MyBot: Events Today: None Events:  -- 6/8/2018, test, test-- 6/8/2018, test2, test2-- 6/7/2018, test3, test3
+DEBUG- 2018-06-19 11:13:58.888688 >> KeyboardInterrupt
+DEBUG- 2018-06-19 11:14:00.785488 >> System Shutdown
+DEBUG- 2018-06-19 11:14:01.925844 >> System Started
+DEBUG- 2018-06-19 11:14:57.546222 >> KeyboardInterrupt
+DEBUG- 2018-06-19 11:14:59.155852 >> System Shutdown
+DEBUG- 2018-06-19 11:15:00.901637 >> System Started
+ INFO- 2018-06-19 11:15:17.334665 >> Zachary Andrews: @mybot create event: 6/18/18, test, test
+ INFO- 2018-06-19 11:15:17.505500 >> MyBot: Okay, I made an event: 6/18/2018, test, test
+DEBUG- 2018-06-19 11:15:24.895505 >> KeyboardInterrupt
+DEBUG- 2018-06-19 11:15:28.210821 >> System Shutdown
+DEBUG- 2018-06-19 11:15:35.341131 >> System Started
+ INFO- 2018-06-19 11:15:43.928257 >> Zachary Andrews: @mybot list events
+ INFO- 2018-06-19 11:15:44.122973 >> MyBot: Events Today: None Events:  None
+ INFO- 2018-06-19 11:17:37.823653 >> Zachary Andrews: @mybot create event: 6/8/18, test, test
+ INFO- 2018-06-19 11:17:38.008040 >> MyBot: Okay, I made an event: 6/8/2018, test, test
+ INFO- 2018-06-19 11:17:54.013366 >> Zachary Andrews: @mybot create event: 6/18/18, test2, test2
+ INFO- 2018-06-19 11:17:54.221027 >> MyBot: Okay, I made an event: 6/18/2018, test2, test2
+ INFO- 2018-06-19 11:18:14.367022 >> Zachary Andrews: @mybot create event: 6/19/2018, test3, test3
+ INFO- 2018-06-19 11:18:14.562285 >> MyBot: Okay, I made an event: 6/19/2018, test3, test3
+DEBUG- 2018-06-19 11:18:28.015915 >> KeyboardInterrupt
+DEBUG- 2018-06-19 11:18:29.856566 >> System Shutdown
+DEBUG- 2018-06-19 11:18:32.000890 >> System Started
+DEBUG- 2018-06-19 11:25:22.764092 >> KeyboardInterrupt
+DEBUG- 2018-06-19 11:25:24.749043 >> System Shutdown
+DEBUG- 2018-06-19 11:25:25.885256 >> System Started
+DEBUG- 2018-06-19 11:25:56.897270 >> System Started
+DEBUG- 2018-06-19 11:27:24.469266 >> System Started
+DEBUG- 2018-06-19 11:27:38.436438 >> KeyboardInterrupt
+DEBUG- 2018-06-19 11:27:41.271573 >> System Shutdown
+DEBUG- 2018-06-19 11:27:42.965275 >> System Started
+DEBUG- 2018-06-19 11:29:32.358423 >> KeyboardInterrupt
+DEBUG- 2018-06-19 11:29:34.175082 >> System Shutdown
+DEBUG- 2018-06-19 11:29:35.684874 >> System Started
+DEBUG- 2018-06-19 11:30:13.537244 >> System Started
+DEBUG- 2018-06-19 11:30:26.274154 >> System Started
+DEBUG- 2018-06-19 11:30:32.231656 >> KeyboardInterrupt
+DEBUG- 2018-06-19 11:30:33.926896 >> System Shutdown
+DEBUG- 2018-06-19 11:30:36.252862 >> System Started
+DEBUG- 2018-06-19 11:36:18.546951 >> KeyboardInterrupt
+DEBUG- 2018-06-19 11:36:20.458805 >> System Shutdown
+DEBUG- 2018-06-19 11:37:00.559219 >> System Started
+DEBUG- 2018-06-19 11:37:45.834259 >> KeyboardInterrupt
+DEBUG- 2018-06-19 11:37:48.018139 >> System Shutdown
+DEBUG- 2018-06-19 11:37:49.559749 >> System Started
+DEBUG- 2018-06-19 11:40:45.764834 >> KeyboardInterrupt
+DEBUG- 2018-06-19 11:40:49.402453 >> System Shutdown
+DEBUG- 2018-06-19 11:41:00.513018 >> System Started
+DEBUG- 2018-06-19 11:41:41.651534 >> System Started
+DEBUG- 2018-06-19 11:41:48.223785 >> KeyboardInterrupt
+DEBUG- 2018-06-19 11:41:49.904144 >> System Shutdown
+DEBUG- 2018-06-19 11:41:51.822179 >> System Started
+DEBUG- 2018-06-19 11:42:12.587800 >> KeyboardInterrupt
+DEBUG- 2018-06-19 11:42:14.992480 >> System Shutdown
+DEBUG- 2018-06-19 11:42:15.991639 >> System Started
+DEBUG- 2018-06-19 11:42:20.288866 >> KeyboardInterrupt
+DEBUG- 2018-06-19 11:42:21.833335 >> System Shutdown
+DEBUG- 2018-06-19 11:43:00.028100 >> System Started
+DEBUG- 2018-06-19 11:43:05.168325 >> KeyboardInterrupt
+DEBUG- 2018-06-19 11:43:07.426080 >> System Shutdown
+DEBUG- 2018-06-19 11:43:08.733511 >> System Started
+DEBUG- 2018-06-19 11:44:07.326519 >> KeyboardInterrupt
+DEBUG- 2018-06-19 11:44:08.822446 >> System Shutdown
+DEBUG- 2018-06-19 11:44:11.216673 >> System Started
+DEBUG- 2018-06-19 11:44:25.073729 >> KeyboardInterrupt
+DEBUG- 2018-06-19 11:44:26.802875 >> System Shutdown
+DEBUG- 2018-06-19 11:44:28.863060 >> System Started
+DEBUG- 2018-06-19 11:44:32.011038 >> KeyboardInterrupt
+DEBUG- 2018-06-19 11:44:33.687727 >> System Shutdown
+DEBUG- 2018-06-19 11:44:34.857290 >> System Started
+DEBUG- 2018-06-19 11:44:36.516273 >> KeyboardInterrupt
+DEBUG- 2018-06-19 11:44:38.216152 >> System Shutdown
+DEBUG- 2018-06-19 11:44:43.239490 >> System Started
+DEBUG- 2018-06-19 11:44:47.891174 >> KeyboardInterrupt
+DEBUG- 2018-06-19 11:44:50.562559 >> System Shutdown
+DEBUG- 2018-06-19 11:44:52.826308 >> System Started
+DEBUG- 2018-06-19 11:45:04.851688 >> KeyboardInterrupt
+DEBUG- 2018-06-19 11:45:06.260647 >> System Shutdown
+DEBUG- 2018-06-19 11:45:07.529629 >> System Started
+DEBUG- 2018-06-19 11:45:11.712616 >> KeyboardInterrupt
+DEBUG- 2018-06-19 11:45:13.109094 >> System Shutdown
+DEBUG- 2018-06-19 11:46:51.433037 >> System Started
+DEBUG- 2018-06-19 11:47:18.365559 >> KeyboardInterrupt
+DEBUG- 2018-06-19 11:47:20.373574 >> System Shutdown
+DEBUG- 2018-06-19 11:47:21.437113 >> System Started
+DEBUG- 2018-06-19 11:47:31.877616 >> KeyboardInterrupt
+DEBUG- 2018-06-19 11:47:33.176473 >> System Shutdown
+DEBUG- 2018-06-19 11:47:34.367408 >> System Started
+DEBUG- 2018-06-19 11:47:40.079391 >> KeyboardInterrupt
+DEBUG- 2018-06-19 11:47:41.558670 >> System Shutdown
+DEBUG- 2018-06-19 11:48:00.085331 >> System Started
+DEBUG- 2018-06-19 11:48:56.775006 >> KeyboardInterrupt
+DEBUG- 2018-06-19 11:48:58.506116 >> System Shutdown
+DEBUG- 2018-06-19 11:49:01.033907 >> System Started
+DEBUG- 2018-06-19 11:50:05.064914 >> KeyboardInterrupt
+DEBUG- 2018-06-19 11:50:06.494258 >> System Shutdown
+DEBUG- 2018-06-19 11:50:07.788469 >> System Started
+DEBUG- 2018-06-19 11:50:15.528243 >> KeyboardInterrupt
+DEBUG- 2018-06-19 11:50:16.998365 >> System Shutdown
+DEBUG- 2018-06-19 11:50:18.362269 >> System Started
+DEBUG- 2018-06-19 11:50:21.228982 >> KeyboardInterrupt
+DEBUG- 2018-06-19 11:50:23.016055 >> System Shutdown
+DEBUG- 2018-06-19 11:50:47.568304 >> System Started
+DEBUG- 2018-06-19 11:50:57.893580 >> KeyboardInterrupt
+DEBUG- 2018-06-19 11:50:59.400813 >> System Shutdown
+DEBUG- 2018-06-19 11:51:00.759247 >> System Started
+DEBUG- 2018-06-19 11:51:36.364133 >> KeyboardInterrupt
+DEBUG- 2018-06-19 11:51:38.239296 >> System Shutdown
+DEBUG- 2018-06-19 11:51:39.629991 >> System Started
+DEBUG- 2018-06-19 11:51:49.837196 >> KeyboardInterrupt
+DEBUG- 2018-06-19 11:51:51.576719 >> System Shutdown
+DEBUG- 2018-06-19 11:51:53.696843 >> System Started
+DEBUG- 2018-06-19 11:52:05.379263 >> KeyboardInterrupt
+DEBUG- 2018-06-19 11:52:06.999364 >> System Shutdown
+DEBUG- 2018-06-19 11:52:08.203065 >> System Started
+DEBUG- 2018-06-19 11:52:24.408411 >> KeyboardInterrupt
+DEBUG- 2018-06-19 11:52:26.338197 >> System Shutdown
+DEBUG- 2018-06-19 11:52:27.704187 >> System Started
+ INFO- 2018-06-19 11:52:47.974830 >> Zachary Andrews: @mybot create event: 6/8/18, test, test
+ INFO- 2018-06-19 11:52:48.182170 >> MyBot: Okay, I made an event: 6/8/2018, test, test
+DEBUG- 2018-06-19 11:52:55.837203 >> KeyboardInterrupt
+DEBUG- 2018-06-19 11:52:57.524636 >> System Shutdown
+DEBUG- 2018-06-19 11:53:00.146807 >> System Started
+DEBUG- 2018-06-19 11:53:41.804007 >> KeyboardInterrupt
+DEBUG- 2018-06-19 11:53:43.258881 >> System Shutdown
+DEBUG- 2018-06-19 11:53:44.397515 >> System Started
+DEBUG- 2018-06-21 09:22:34.618847 >> System Started
+DEBUG- 2018-06-21 09:22:37.908750 >> KeyboardInterrupt
+DEBUG- 2018-06-21 09:22:39.793904 >> System Shutdown

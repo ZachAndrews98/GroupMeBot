@@ -2,13 +2,15 @@
 # Github: ZachAndrews98
 
 import datetime
+import os
 
 # list of events
 class event_list:
     event_list = list()
     def __init__(self):
-        self.event_list.clear()
-        self.check_for_events()
+        #self.event_list.clear()
+        #self.check_for_events()
+        print(event_list)
 
     # adds event to list
     def add_event(self, event):
@@ -16,6 +18,7 @@ class event_list:
         with open('events/event_list.evt','a') as file:
             file.write(str(event)+'\n')
         file.close()
+        self.remove_blank_lines()
 
     # returns the entire list of events
     def get_event_list(self):
@@ -44,16 +47,19 @@ class event_list:
                 if event.name == event_name:
                     self.event_list.remove(event)
         file.close()
+        self.remove_blank_lines()
 
-    # deletes all events on a given date
-    def delete_event_by_date(self,date):
+    # deletes all events on and before a given date
+    def delete_event_before_date(self,date):
         with open('events/event_list.evt','w+') as file:
             for event in list(self.event_list):
-                if event.date != date:
+                print(event.date <= date)
+                if event.date > date:
                     file.write(str(event)+'\n')
-                if event.date == date:
+                if event.date <= date:
                     self.event_list.remove(event)
         file.close()
+        self.remove_blank_lines()
 
     # run at startup, checks if any events are stored, if there are adds them to the list
     def check_for_events(self):
@@ -61,16 +67,29 @@ class event_list:
         try:
             file = open('events/event_list.evt','r')
             for line in file:
+                print(line)
                 line = line.split(', ')
                 date = line[0].split('/')
                 self.event_list.append(event(line[1],datetime.date(int(date[2]),
                                             int(date[0]),int(date[1])),line[2]))
             file.close()
         # creates file if doesn't exist
+            print(self.event_list)
+            print(len(self.event_list))
         except:
             file = open('events/event_list.evt','w+')
             file.close()
             return
+
+    def remove_blank_lines(self):
+        with open('events/event_list.evt') as filehandle:
+            lines = filehandle.readlines()
+
+        with open('events/event_list.evt', 'w+') as file:
+            lines = filter(lambda x: x.strip(), lines)
+            file.writelines(lines)
+        filehandle.close()
+        file.close()
 
 # event class, stores information about an event
 class event:
@@ -83,5 +102,5 @@ class event:
         self.desc = event_desc
 
     def __repr__(self):
-        return str(self.date.day)+'/'+str(self.date.month)+ \
+        return str(self.date.month)+'/'+str(self.date.day)+ \
             '/'+str(self.date.year)+', '+self.name+', '+self.desc

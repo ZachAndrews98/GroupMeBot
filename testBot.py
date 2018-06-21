@@ -1,5 +1,5 @@
 """
-    GroupMe Bot Version: 0.2.1
+    GroupMe Bot
     # Created by Zachary Andrews
     # Github: ZachAndrews98
 
@@ -52,13 +52,14 @@ commands = ['read','post','cancel','shutdown','help']
 bot_commands = ['help','time','weather','list events','create event','delete event']
 
 if __name__ == '__main__':
-    #Log.log_debug(str(datetime.datetime.now())+" >> System Started")
-    #testBot.run()
-    g = groups.Groups(testBot.s)
-    test = g.get(KEYS.GROUP_ID)
-    t = test.members
-    testBot.post_message('@Zachary Andrews')
-    Mentions(loci = [0,15], user_ids=[40352095])
+    Log.log_debug(str(datetime.datetime.now())+" >> System Started")
+    testBot.check_date()
+    testBot.run()
+    # g = groups.Groups(testBot.s)
+    # test = g.get(KEYS.GROUP_ID)
+    # t = test.members
+    # testBot.post_message('@Zachary Andrews')
+    # Mentions(loci = [0,15], user_ids=[40352095])
     #testBot.post_message(test)
     #testBot.post_message(str(test))
 
@@ -70,7 +71,9 @@ def run():
                 current_message = mess.list()[0] # newest message
                 analyze_message(current_message) # analyzes the message
                 testBot.NEWEST_MESSAGE_ANALYZED_ID = current_message.id # sets the new analyzed id
-            check_date() # checks if any events have passed
+            if not testBot.checked_events and datetime.datetime.now() > CHECK_TIME and \
+                            datetime.datetime.now() < CHECK_TIME_END:
+                check_date() # checks if any events have passed
     # enters terminal command mode
     except KeyboardInterrupt:
         Log.log_debug(str(datetime.datetime.now())+" >> KeyboardInterrupt")
@@ -148,14 +151,31 @@ def analyze_message(message):
             elif 'weather' in text:
                 response = 'Weather: Displays the current weather in Meadville, PA, also kinda redundant,' +\
                             'but still included'
-            elif 'list events' in text:
-                response = 'List Events: Lists all events that are coming up'
-            elif 'create event' in text:
-                response = 'Create Event: Creates an event, should be formatted as such- ' +\
-                'create event: <date>(m/d/y), <event name>, <event description>'
-            elif 'delete event' in text:
-                response = 'Delete Event: Delete an event, the name of the event should be right'+\
-                            'after the command'
+            elif 'list' in text:
+                if 'events' in text:
+                    response = 'List Events: Lists all events that are scheduled'
+                elif 'reminders' in text:
+                    response = 'List Reminders: Lists all reminders that are scheduled'
+                else:
+                    response = 'That is not a possible command'
+            elif 'create' in text:
+                if 'event' in text:
+                    response = 'Create Event: Creates an event, should be formatted as such- ' +\
+                    'create event: <date>(m/d/y), <event name>, <event description>'
+                elif 'reminders' in text:
+                    response = 'Create Reminder: Creates a reminder, should be formatted as such- ' +\
+                    'create reminder: <day>, <reminder name>, <reminder description>'
+                else:
+                    response = 'That is not a possible command'
+            elif 'delete' in text:
+                if 'event' in text:
+                    response = 'Delete Event: Delete an event, the name of the event should be right'+\
+                                'after the command'
+                elif 'reminder' in text:
+                    response = 'Delete Reminder: Delete a reminder, the name of the reminder should be '+\
+                                'right after the command'
+                else:
+                    response = 'That is not a possible command'
             elif 'help' in text:
                 response = 'Help: Displays possible commands'
             else:
@@ -176,16 +196,22 @@ def analyze_message(message):
                 response = "Make sure you include a ':' after the name of the command and try again"
             # checks if create command
             elif 'create' in text:
-                info = text.split(':')[1].split(',')
-                date = info[0].split('/')
-                date[2] = '20'+date[2]
-                # breaks up message into segments for parsing
-                name = str(info[1]).strip()
-                year = int(date[2])
-                month = int(date[0])
-                day = int(date[1])
-                desc = info[2].strip()
-                response = testBot.create_event(name,year,month,day,desc)
+                try:
+                    info = text.split(':')[1].split(',')
+                    date = info[0].split('/')
+                    if len(date[2]) != 4:
+                        date[2] = '20'+date[2]
+                    # breaks up message into segments for parsing
+                    name = str(info[1]).strip()
+                    year = int(date[2])
+                    month = int(date[1])
+                    day = int(date[0])
+                    desc = info[2].strip()
+                    response = testBot.create_event(name,year,month,day,desc)
+                except Exception:
+                    response = "An error occurred, check the format of the command"
+                    Log.log_error(Exception)
+
             # checks if delete command
             elif 'delete' in text:
                 text = text.split(':')
@@ -224,30 +250,30 @@ def analyze_message(message):
 
 def check_date():
     # if the time matches the threshold, check what the events for the day are, posts them
-    if not testBot.checked_events and datetime.datetime.now() > CHECK_TIME and \
-                    datetime.datetime.now() < CHECK_TIME_END:
-        events = testBot.event_list.get_event_list()
-        for event in events:
-            if event.date < datetime.date.today():
-                Log.log_debug((str(datetime.datetime.now())+" >> deleted: "+str(event)))
-                testBot.event_list.delete_event(event.name)
 
-        events = testBot.event_list.get_events_by_date(datetime.date.today())
-        response = "Today's events: "
-        if len(events) != 0:
-            for event in events:
-                response += '-- '+ str(event)
-        else:
-            response += 'None'
-        reminders = testBot.reminder_list.get_reminders_by_day(datetime.datetime.today().weekday())
-        response += "\nToday's reminders: "
-        if len(reminders) != 0:
-            for reminder in reminders:
-                response += '-- '+ str(reminder) + '\n'
-        else:
-            response += 'None'
-        post_message(response)
-        testBot.checked_events = True
+    # events = testBot.event_list.get_event_list()
+    # for event in events:
+    #     if event.date < datetime.date.today():
+    #         Log.log_debug((str(datetime.datetime.now())+" >> deleted: "+str(event)))
+    #         testBot.event_list.delete_event(event.name)
+    testBot.event_list.delete_event_before_date(datetime.date.today() - datetime.timedelta(1))
+
+    events = testBot.event_list.get_events_by_date(datetime.date.today())
+    response = "Today's events: "
+    if len(events) != 0:
+        for event in events:
+            response += '-- '+ str(event)
+    else:
+        response += 'None'
+    reminders = testBot.reminder_list.get_reminders_by_day(datetime.datetime.today().weekday())
+    response += "\nToday's reminders: "
+    if len(reminders) != 0:
+        for reminder in reminders:
+            response += '-- '+ str(reminder) + '\n'
+    else:
+        response += 'None'
+    post_message(response)
+    testBot.checked_events = True
     #checks if any events have expired
     if testBot.checked_events and datetime.datetime.now() > CHECK_TIME_END:
         testBot.checked_events = False
@@ -271,7 +297,7 @@ def list_events():
 
 def create_event(name, year, month, day, desc):
     # creates a new event and adds it to the list
-    testBot.event_list.add_event(Event_List.event(name,datetime.date(year, month, day),desc))
+    testBot.event_list.add_event(Event_List.event(name,datetime.date(year, day, month),desc))
     response = 'Okay, I made an event: '+str(testBot.event_list.get_event(name))
     return response
 

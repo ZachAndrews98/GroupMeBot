@@ -3,11 +3,13 @@
     # Created by Zachary Andrews
     # Github: ZachAndrews98
 
-    Creats a bot that can be run from the terminal for the GroupMe app. Uses
+    Creates a bot that can be run from the terminal for the GroupMe app. Uses
     Groupy to interface with GroupMe's API, can post and read messages from the
     terminal. Will analyze any message using the '@' symbol and the name of the
     bot in the group. The bot can currently tell the time, weather, and create
-    and keep track of events as well as reminders.
+    and keep track of events as well as reminders. Currently cannot create a bot
+    through this, so in order to use you must create a bot via GroupMe's
+    Developer site.
 """
 # nonlocal imports
 from groupy import session
@@ -26,7 +28,7 @@ import Reminders
 import testBot
 # creates new session (uses api key from groupme), needed for all objects
 s = session.Session(KEYS.GROUPME_API_KEY)
-# create the bot
+# create the bot manager
 test = bots.Bots(s)
 # creates the message utility
 mess = messages.Messages(s,KEYS.GROUP_ID)
@@ -34,6 +36,7 @@ mess = messages.Messages(s,KEYS.GROUP_ID)
 weather = Weather.weather('Meadville, PA, US')
 # stores the bot, assuming only 1 bot to keep track of, if more bots just add more
 # variables and increment the index
+# also assumes a bot has already been made through groupme developer website
 BOT = test.list()[0]
 # stores the ids of the most recently analyzed/read message
 NEWEST_MESSAGE_READ_ID = None
@@ -98,22 +101,23 @@ def run():
             date = str(input('Enter the date of the event\n')).split('/')
             desc = str(input('Enter the description of the event\n'))
             response = testBot.create_event(name,int(date[2]),int(date[0]),int(date[1]),desc)
-            testBot.post_message(response)
+            print(response)
         elif command == 'list events':
             response = testBot.list_events()
-            testBot.post_message(response)
-        # elif command == 'delete event':
-        #     name = str(input('Enter the name of the event\n'))
-        #     testBot.delete_event(name)
+            print(response)
+        elif command == 'delete event':
+            name = str(input('Enter the name of the event\n'))
+            testBot.delete_event(name)
+            print("Event Deleted")
         elif command == 'create reminder':
             day = str(input('Enter the day for the reminder\n'))
             id = str(input('Enter the name of the reminder\n'))
             desc = str(input('Enter the description of the event\n'))
             response = testBot.create_reminder(day, id, desc)
-            testBot.post_message(response)
+            print(response)
         elif command == 'list reminders':
             response = testBot.list_reminders()
-            testBot.post_message(response)
+            print(response)
         # elif command == 'delete reminder':
         #     name = str(input('Enter the name of the reminder\n'))
         #     testBot.delete_reminder(name)
@@ -231,12 +235,10 @@ def analyze_message(message):
                 id = info[1].strip()
                 desc = info[2].strip()
                 response = testBot.create_reminder(day, id, desc)
-            elif 'delete' in text:
-                text = text.split(':')
-                if testBot.reminder_list.delete_reminder(text[1].strip()):
-                    response = 'Okay I have removed the reminder'
-                else:
-                    response = 'That reminder does not exist'
+            # switch over to reminder deletion
+            # elif 'delete' in text:
+            #     text = text.split(':')
+            #     testBot.delete_event(text[1].strip())
             else:
                 response = "I'm sorry, I don't believe that is one of the options"
         elif 'help' in text:
@@ -250,14 +252,7 @@ def analyze_message(message):
 
 def check_date():
     # if the time matches the threshold, check what the events for the day are, posts them
-
-    # events = testBot.event_list.get_event_list()
-    # for event in events:
-    #     if event.date < datetime.date.today():
-    #         Log.log_debug((str(datetime.datetime.now())+" >> deleted: "+str(event)))
-    #         testBot.event_list.delete_event(event.name)
     testBot.event_list.delete_event_before_date(datetime.date.today() - datetime.timedelta(1))
-
     events = testBot.event_list.get_events_by_date(datetime.date.today())
     response = "Today's events: "
     if len(events) != 0:
@@ -301,6 +296,11 @@ def create_event(name, year, month, day, desc):
     response = 'Okay, I made an event: '+str(testBot.event_list.get_event(name))
     return response
 
+def create_reminder(day, id, desc):
+    testBot.reminder_list.add_reminder(Reminders.reminder(day, id, desc))
+    response = 'Okay I have created a reminder: '+str(testBot.reminder_list.get_reminder(id))
+    return response
+
 def list_reminders():
     response = 'Reminders: \n'
     reminders = testBot.reminder_list.get_reminders()
@@ -311,10 +311,17 @@ def list_reminders():
         response += 'None'
     return response
 
-def create_reminder(day, id, desc):
-    testBot.reminder_list.add_reminder(Reminders.reminder(day, id, desc))
-    response = 'Okay I have created a reminder: '+str(testBot.reminder_list.get_reminder(id))
-    return response
+def delete_event(name):
+    if testBot.event_list.delete_event(name.strip()):
+        response = 'Okay I have removed the reminder'
+    else:
+        response = 'That reminder does not exist'
+
+def delete_reminder(name):
+    if testBot.reminder_list.delete_event(name.strip()):
+        response = 'Okay I have removed the reminder'
+    else:
+        response = 'That reminder does not exist'
 
 # posts message into group
 def post_message(message):
@@ -324,4 +331,7 @@ def post_message(message):
 def check_easter_egg(text):
     if datetime.datetime.now().time == datetime.time(16,4):
         post_message("Error 4:04, command not found")
+        return True
+    if "69" in text:
+        post_message("HA, nice")
         return True

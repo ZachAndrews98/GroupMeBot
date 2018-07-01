@@ -1,3 +1,5 @@
+# Created by Zachary Andrews
+# Github: ZachAndrews98
 
 class reminder_list:
     reminders = list()

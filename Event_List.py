@@ -8,9 +8,8 @@ import os
 class event_list:
     event_list = list()
     def __init__(self):
-        #self.event_list.clear()
-        #self.check_for_events()
-        print(event_list)
+        self.event_list.clear()
+        self.check_for_events()
 
     # adds event to list
     def add_event(self, event):
@@ -49,11 +48,10 @@ class event_list:
         file.close()
         self.remove_blank_lines()
 
-    # deletes all events on and before a given date
+    # deletes all events on or before a given date
     def delete_event_before_date(self,date):
         with open('events/event_list.evt','w+') as file:
             for event in list(self.event_list):
-                print(event.date <= date)
                 if event.date > date:
                     file.write(str(event)+'\n')
                 if event.date <= date:
@@ -67,15 +65,12 @@ class event_list:
         try:
             file = open('events/event_list.evt','r')
             for line in file:
-                print(line)
                 line = line.split(', ')
                 date = line[0].split('/')
                 self.event_list.append(event(line[1],datetime.date(int(date[2]),
                                             int(date[0]),int(date[1])),line[2]))
             file.close()
         # creates file if doesn't exist
-            print(self.event_list)
-            print(len(self.event_list))
         except:
             file = open('events/event_list.evt','w+')
             file.close()

@@ -1136,3 +1136,83 @@ DEBUG- 2018-06-19 11:53:44.397515 >> System Started
 DEBUG- 2018-06-21 09:22:34.618847 >> System Started
 DEBUG- 2018-06-21 09:22:37.908750 >> KeyboardInterrupt
 DEBUG- 2018-06-21 09:22:39.793904 >> System Shutdown
+DEBUG- 2018-06-21 09:31:15.565859 >> System Started
+DEBUG- 2018-06-21 09:31:31.087863 >> System Started
+DEBUG- 2018-06-21 09:31:32.519587 >> KeyboardInterrupt
+DEBUG- 2018-06-21 09:31:34.420149 >> System Shutdown
+DEBUG- 2018-06-23 16:29:14.779983 >> System Started
+DEBUG- 2018-06-23 16:29:57.082569 >> KeyboardInterrupt
+DEBUG- 2018-06-23 16:30:06.390334 >> Manual Posting: will, you're a dumbass
+DEBUG- 2018-06-23 16:30:06.770706 >> Continuing operation
+DEBUG- 2018-06-23 16:30:23.569465 >> KeyboardInterrupt
+DEBUG- 2018-06-23 16:30:25.453404 >> System Shutdown
+DEBUG- 2018-06-29 23:45:23.975208 >> System Started
+ INFO- 2018-06-29 23:51:37.433085 >> Zachary Andrews: @mybot whats the weather
+ INFO- 2018-06-29 23:51:38.298905 >> MyBot: The weather is currently: Clear Temperature: 74° Humidity: 78%
+ INFO- 2018-06-29 23:54:42.638440 >> Zachary Andrews: @mybot whats the time
+ INFO- 2018-06-29 23:54:42.866653 >> MyBot: The time is currently: 23:54:42.638610
+DEBUG- 2018-07-01 16:09:06.868319 >> System Started
+ INFO- 2018-07-01 16:09:12.926792 >> Zachary Andrews: @mybot time
+ INFO- 2018-07-01 16:09:13.176376 >> MyBot: The time is currently: 16:09:12.926941
+ INFO- 2018-07-01 16:09:26.366186 >> Zachary Andrews: @mybot whats the time
+ INFO- 2018-07-01 16:09:26.600237 >> MyBot: The time is currently: 16:09:26.366987
+ INFO- 2018-07-01 16:10:50.586792 >> Zachary Andrews: @mybot create event: 7/2/18, test, test1
+ INFO- 2018-07-01 16:10:51.054662 >> MyBot: Okay, I made an event: 7/2/2018, test, test1
+ INFO- 2018-07-01 16:11:38.940900 >> Zachary Andrews: @mybot create event: 7/1/18, test2, test2
+ INFO- 2018-07-01 16:11:39.148012 >> MyBot: Okay, I made an event: 7/1/2018, test2, test2
+ INFO- 2018-07-01 16:12:21.252986 >> Zachary Andrews: @mybot create event: 6/30/18, test3, test3
+ INFO- 2018-07-01 16:12:21.479347 >> MyBot: Okay, I made an event: 6/30/2018, test3, test3
+DEBUG- 2018-07-01 16:12:32.486175 >> KeyboardInterrupt
+DEBUG- 2018-07-01 16:12:35.724608 >> System Shutdown
+DEBUG- 2018-07-01 16:12:37.982984 >> System Started
+DEBUG- 2018-07-01 16:13:59.743356 >> KeyboardInterrupt
+DEBUG- 2018-07-01 16:14:02.393298 >> System Shutdown
+DEBUG- 2018-07-01 16:14:03.845903 >> System Started
+DEBUG- 2018-07-01 16:14:26.515397 >> KeyboardInterrupt
+DEBUG- 2018-07-01 16:14:28.299502 >> System Shutdown
+DEBUG- 2018-07-01 16:14:31.882057 >> System Started
+DEBUG- 2018-07-01 16:16:24.738076 >> KeyboardInterrupt
+DEBUG- 2018-07-01 16:16:26.077414 >> System Shutdown
+DEBUG- 2018-07-01 16:16:27.686981 >> System Started
+DEBUG- 2018-07-01 16:16:52.399020 >> KeyboardInterrupt
+DEBUG- 2018-07-01 16:16:53.988798 >> System Shutdown
+DEBUG- 2018-07-01 16:16:55.212218 >> System Started
+DEBUG- 2018-07-01 16:18:32.956155 >> KeyboardInterrupt
+DEBUG- 2018-07-01 16:18:34.639026 >> System Shutdown
+DEBUG- 2018-07-01 16:18:36.513635 >> System Started
+ INFO- 2018-07-01 16:18:50.442149 >> Zachary Andrews: @mybot list events
+ INFO- 2018-07-01 16:18:50.666437 >> MyBot: Events Today: -- 7/1/2018, test2, test2   Events:  -- 7/2/2018, test, test1 -- 7/1/2018, test2, test2 
+ INFO- 2018-07-01 16:19:07.775833 >> Zachary Andrews: @mybot create event: 7/2/18, test3, test3
+ INFO- 2018-07-01 16:19:07.977058 >> MyBot: Okay, I made an event: 7/2/2018, test3, test3
+ INFO- 2018-07-01 16:19:23.239890 >> Zachary Andrews: @mybot delete event: test2
+ INFO- 2018-07-01 16:19:23.469908 >> MyBot: Okay I have removed the event
+ INFO- 2018-07-01 16:19:44.156110 >> Zachary Andrews: @mybot create event: 6/30/18: test2, test2
+DEBUG- ERROR OCCURRED, CHECK ERROR LOG
+ INFO- 2018-07-01 16:19:44.365983 >> MyBot: An error occurred, check the format of the command
+ INFO- 2018-07-01 16:20:05.007513 >> Zachary Andrews: @mybot create event: 6/30/18, test2, test2
+ INFO- 2018-07-01 16:20:05.223266 >> MyBot: Okay, I made an event: 6/30/2018, test2, test2
+DEBUG- 2018-07-01 16:20:18.066970 >> KeyboardInterrupt
+DEBUG- 2018-07-01 16:20:19.970061 >> System Shutdown
+DEBUG- 2018-07-01 16:20:23.485400 >> System Started
+DEBUG- 2018-07-01 16:26:44.217538 >> KeyboardInterrupt
+DEBUG- 2018-07-01 16:26:45.672061 >> System Shutdown
+DEBUG- 2018-07-01 16:27:05.946238 >> System Started
+DEBUG- 2018-07-01 16:34:33.393231 >> KeyboardInterrupt
+DEBUG- 2018-07-01 16:34:34.845088 >> System Shutdown
+DEBUG- 2018-07-01 16:34:36.173129 >> System Started
+DEBUG- 2018-07-01 16:34:42.074067 >> KeyboardInterrupt
+DEBUG- 2018-07-01 16:34:46.215535 >> Continuing operation
+DEBUG- 2018-07-01 16:36:15.798797 >> KeyboardInterrupt
+DEBUG- 2018-07-01 16:36:17.225495 >> System Shutdown
+DEBUG- 2018-07-01 16:36:18.638125 >> System Started
+DEBUG- 2018-07-01 16:36:39.668330 >> KeyboardInterrupt
+DEBUG- 2018-07-01 16:36:41.909147 >> Continuing operation
+DEBUG- 2018-07-01 16:36:44.182717 >> KeyboardInterrupt
+DEBUG- 2018-07-01 16:36:47.346439 >> Continuing operation
+DEBUG- 2018-07-01 16:37:43.448066 >> KeyboardInterrupt
+DEBUG- 2018-07-01 16:38:05.893009 >> Continuing operation
+DEBUG- 2018-07-01 16:38:08.671145 >> KeyboardInterrupt
+DEBUG- 2018-07-01 16:38:09.994658 >> System Shutdown
+DEBUG- 2018-07-01 16:38:14.958946 >> System Started
+DEBUG- 2018-07-01 16:40:45.912347 >> KeyboardInterrupt
+DEBUG- 2018-07-01 16:40:47.814010 >> System Shutdown

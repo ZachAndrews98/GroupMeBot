@@ -1,5 +1,5 @@
 __pycache__
 KEYS.py
 unused/
-logs/*.out
-
+logs/*
+events/*

@@ -1216,3 +1216,68 @@ DEBUG- 2018-07-01 16:38:09.994658 >> System Shutdown
 DEBUG- 2018-07-01 16:38:14.958946 >> System Started
 DEBUG- 2018-07-01 16:40:45.912347 >> KeyboardInterrupt
 DEBUG- 2018-07-01 16:40:47.814010 >> System Shutdown
+DEBUG- 2018-07-09 14:28:01.539809 >> System Started
+DEBUG- 2018-07-09 14:28:15.864759 >> System Started
+ INFO- 2018-07-09 14:28:31.378848 >> Zachary Andrews: @mybot
+DEBUG- 2018-07-09 14:28:55.826817 >> System Started
+ INFO- 2018-07-09 14:29:01.486493 >> Zachary Andrews: @mybot
+ INFO- 2018-07-09 14:29:01.665379 >> MyBot: Hi, @Zachary Andrews what would you like?
+DEBUG- 2018-07-09 15:33:42.960793 >> KeyboardInterrupt
+DEBUG- 2018-07-09 15:33:44.978433 >> System Shutdown
+DEBUG- 2018-07-09 15:33:46.520650 >> System Started
+ INFO- 2018-07-09 15:33:51.481087 >> Zachary Andrews: @mybot
+ INFO- 2018-07-09 15:33:51.663495 >> MyBot: Hi, @Zachary Andrews what would you like?
+ INFO- 2018-07-09 15:34:35.590726 >> Zachary Andrews: @mybot list events
+ INFO- 2018-07-09 15:34:35.773307 >> MyBot: Events Today: None Events:  None
+DEBUG- 2018-07-09 15:34:48.114431 >> KeyboardInterrupt
+DEBUG- 2018-07-09 15:34:50.123697 >> System Shutdown
+DEBUG- 2018-07-09 15:34:51.307142 >> System Started
+ INFO- 2018-07-09 15:34:54.012306 >> Zachary Andrews: @mybot
+ INFO- 2018-07-09 15:34:54.194565 >> MyBot: Hi, @Zachary Andrews what would you like?
+ INFO- 2018-07-09 15:34:58.967582 >> Zachary Andrews: @mybot create event
+ INFO- 2018-07-09 15:34:59.167305 >> MyBot: Make sure you include a ':' after the name of the command and try again
+ INFO- 2018-07-09 15:35:20.635035 >> Zachary Andrews: @mybot create event: 7/10/18
+DEBUG- ERROR OCCURRED, CHECK ERROR LOG
+ INFO- 2018-07-09 15:35:20.820865 >> MyBot: An error occurred, check the format of the command
+ INFO- 2018-07-09 15:35:45.469215 >> Zachary Andrews: @mybot create event: 7/10/18, test, test
+ INFO- 2018-07-09 15:35:45.675943 >> MyBot: Okay, I made an event: 7/10/2018, test, test
+DEBUG- 2018-07-09 15:35:49.989204 >> KeyboardInterrupt
+DEBUG- 2018-07-09 15:36:09.332458 >> Continuing operation
+ INFO- 2018-07-09 15:36:28.754913 >> Zachary Andrews: @mybot list events
+ INFO- 2018-07-09 15:36:28.942115 >> MyBot: Events Today: None Events:  -- 7/10/2018, test, test-- 11/7/18, test2, this is another test
+ INFO- 2018-07-09 15:36:40.985678 >> Zachary Andrews: @mybot list events
+ INFO- 2018-07-09 15:36:41.170367 >> MyBot: Events Today: None Events:  -- 7/10/2018, test, test-- 11/7/18, test2, this is another test
+ INFO- 2018-07-09 15:36:53.937191 >> Zachary Andrews: @mybot list reminders
+ INFO- 2018-07-09 15:36:54.128962 >> MyBot: Reminders:  -- wednesday: wear it wednesday- wear your letters -- sunday: chapter- chapter is today 
+DEBUG- 2018-07-09 15:54:56.605326 >> KeyboardInterrupt
+DEBUG- 2018-07-09 15:54:58.375953 >> System Shutdown
+DEBUG- 2018-07-09 15:54:59.620661 >> System Started
+ INFO- 2018-07-09 15:55:05.628420 >> Zachary Andrews: @mybot list events
+ INFO- 2018-07-09 15:55:05.842660 >> MyBot: Events Today: None Events:  -- 7/10/2018, test, test 
+DEBUG- 2018-07-09 15:55:20.784384 >> KeyboardInterrupt
+DEBUG- 2018-07-09 15:55:33.212737 >> Continuing operation
+ INFO- 2018-07-09 15:55:43.181364 >> Zachary Andrews: @mybot list events
+ INFO- 2018-07-09 15:55:43.378141 >> MyBot: Events Today: None Events:  -- 7/10/2018, test, test -- 11/7/18, test2, this is a test
+DEBUG- 2018-07-09 15:55:48.998639 >> KeyboardInterrupt
+DEBUG- 2018-07-09 15:55:50.836966 >> System Shutdown
+DEBUG- 2018-07-09 15:55:52.233237 >> System Started
+DEBUG- 2018-07-09 15:57:14.271481 >> KeyboardInterrupt
+DEBUG- 2018-07-09 15:57:15.695499 >> System Shutdown
+DEBUG- 2018-07-09 15:57:16.788013 >> System Started
+DEBUG- 2018-07-09 15:57:18.971381 >> KeyboardInterrupt
+DEBUG- 2018-07-09 15:57:30.201324 >> Continuing operation
+ INFO- 2018-07-09 15:57:41.900174 >> Zachary Andrews: @mybot list events
+ INFO- 2018-07-09 15:57:42.090829 >> MyBot: Events Today: None Events:  -- 7/10/2018, test, test -- 7/11/18, test2, this is a test
+DEBUG- 2018-07-09 15:57:46.034342 >> KeyboardInterrupt
+DEBUG- 2018-07-09 15:57:48.543811 >> System Shutdown
+DEBUG- 2018-07-09 15:57:49.636830 >> System Started
+ INFO- 2018-07-09 15:57:56.773944 >> Zachary Andrews: @mybot list events
+ INFO- 2018-07-09 15:57:56.968123 >> MyBot: Events Today: None Events:  -- 7/10/2018, test, test 
+DEBUG- 2018-07-09 15:59:20.221605 >> KeyboardInterrupt
+DEBUG- 2018-07-09 15:59:22.192907 >> System Shutdown
+DEBUG- 2018-07-10 08:42:37.164571 >> System Started
+DEBUG- 2018-07-10 08:42:53.496204 >> KeyboardInterrupt
+DEBUG- 2018-07-10 08:42:55.022539 >> System Shutdown
+DEBUG- 2018-07-10 08:45:06.323386 >> System Started
+DEBUG- 2018-07-10 08:45:16.930129 >> KeyboardInterrupt
+DEBUG- 2018-07-10 08:45:18.482432 >> System Shutdown

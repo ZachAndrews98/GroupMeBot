@@ -72,4 +72,4 @@ class reminder:
         self.desc = desc
 
     def __repr__(self):
-        return self.Day+': '+self.id+'- '+self.desc
+        return self.Day+': '+self.id+'- '+self.desc+'\n'

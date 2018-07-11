@@ -27,6 +27,7 @@ import Event_List
 import Reminders
 import Analyze
 import Main
+import Functions
 # creates new session (uses api key from groupme), needed for all objects
 s = session.Session(KEYS.GROUPME_API_KEY)
 # create the bot manager
@@ -57,15 +58,8 @@ bot_commands = ['help','time','weather','list events','create event','delete eve
 
 if __name__ == '__main__':
     Log.log_debug(str(datetime.datetime.now())+" >> System Started")
-    Main.check_date()
+    Functions.check_date()
     Main.run()
-    # g = groups.Groups(Main.s)
-    # manager = g.get(KEYS.GROUP_ID)
-    # t = manager.members
-    # Main.post_message('@Zachary Andrews')
-    # Mentions(loci = [0,15], user_ids=[40352095])
-    #Main.post_message(manager)
-    #Main.post_message(str(manager))
 
 def run():
     try:
@@ -98,30 +92,30 @@ def run():
             post_message(message)
         # get help information
         elif command == 'create event':
-            name = str(input('Enter the name of the event\n'))
             date = str(input('Enter the date of the event\n')).split('/')
+            name = str(input('Enter the name of the event\n'))
             desc = str(input('Enter the description of the event\n'))
-            response = Main.create_event(name,int(date[2]),int(date[1]),int(date[0]),desc)
+            response = Functions.create_event(name,int(date[2]),int(date[1]),int(date[0]),desc)
             print(response)
         elif command == 'list events':
-            response = Main.list_events()
+            response = Functions.list_events()
             print(response)
         elif command == 'delete event':
             name = str(input('Enter the name of the event\n'))
-            Main.delete_event(name)
+            Functions.delete_event(name)
             print("Event Deleted")
         elif command == 'create reminder':
             day = str(input('Enter the day for the reminder\n'))
             id = str(input('Enter the name of the reminder\n'))
             desc = str(input('Enter the description of the event\n'))
-            response = Main.create_reminder(day, id, desc)
+            response = Functions.create_reminder(day, id, desc)
             print(response)
         elif command == 'list reminders':
-            response = Main.list_reminders()
+            response = Functions.list_reminders()
             print(response)
         elif command == 'delete reminder':
             name = str(input('Enter the name of the reminder\n'))
-            Main.delete_reminder(name)
+            Functions.delete_reminder(name)
         elif command == 'help':
             Log.log_debug(str(datetime.datetime.now())+" >> Help")
             print("Possible Commands:")
@@ -136,89 +130,3 @@ def run():
             pass
         Log.log_debug(str(datetime.datetime.now())+" >> Continuing operation")
         run()
-
-def check_date():
-    # if the time matches the threshold, check what the events for the day are, posts them
-    Main.event_list.delete_event_before_date(datetime.date.today() - datetime.timedelta(1))
-    events = Main.event_list.get_events_by_date(datetime.date.today())
-    response = "Today's events: "
-    if len(events) != 0:
-        for event in events:
-            response += '-- '+ str(event)
-    else:
-        response += 'None'
-    reminders = Main.reminder_list.get_reminders_by_day(datetime.datetime.today().weekday())
-    response += "\nToday's reminders: "
-    if len(reminders) != 0:
-        for reminder in reminders:
-            response += '-- '+ str(reminder) + '\n'
-    else:
-        response += 'None'
-    post_message(response)
-    Main.checked_events = True
-    #checks if any events have expired
-    if Main.checked_events and datetime.datetime.now() > CHECK_TIME_END:
-        Main.checked_events = False
-
-def list_events():
-    response = 'Events Today:\n'
-    events = Main.event_list.get_events_by_date(datetime.date.today())
-    if len(events) != 0:
-        for event in events:
-            response += '-- '+ str(event) + '\n'
-    else:
-        response += 'None'
-    response += '\nEvents: \n'
-    events = Main.event_list.get_event_list()
-    if len(events) != 0:
-        for event in events:
-            response += '-- '+ str(event)
-    else:
-        response += 'None'
-    return response
-
-def create_event(name, year, month, day, desc):
-    # creates a new event and adds it to the list
-    Main.event_list.add_event(Event_List.event(name,datetime.date(year, day, month),desc))
-    response = 'Okay, I made an event: '+str(Main.event_list.get_event(name))
-    return response
-
-def create_reminder(day, id, desc):
-    Main.reminder_list.add_reminder(Reminders.reminder(day, id, desc))
-    response = 'Okay I have created a reminder: '+str(Main.reminder_list.get_reminder(id))
-    return response
-
-def list_reminders():
-    response = 'Reminders: \n'
-    reminders = Main.reminder_list.get_reminders()
-    if len(reminders) != 0:
-        for reminder in reminders:
-            response += '-- '+ str(reminder)+'\n'
-    else:
-        response += 'None'
-    return response
-
-def delete_event(name):
-    if Main.event_list.delete_event(name.strip()):
-        response = 'Okay I have removed the event'
-    else:
-        response = 'That reminder does not exist'
-
-def delete_reminder(name):
-    if Main.reminder_list.delete_reminder(name.strip()):
-        response = 'Okay I have removed the reminder'
-    else:
-        response = 'That reminder does not exist'
-
-# posts message into group
-def post_message(message):
-    manager.post(str(BOT.bot_id),str(message))
-
-# childish easter eggs cause I am a child
-def check_easter_egg(text):
-    if datetime.datetime.now().time == datetime.time(16,4):
-        post_message("Error 4:04, command not found")
-        return True
-    if "69" in text:
-        post_message("HA, nice")
-        return True

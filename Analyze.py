@@ -1,7 +1,11 @@
+# Created by Zachary Andrews
+# Github: ZachAndrews98
+
 import datetime
 
 import Main
 import Log
+import Functions
 
 def analyze_message(message):
     response = ''
@@ -10,7 +14,7 @@ def analyze_message(message):
     # checks if the bot is mentioned
     if at_bot.lower() in text:
         Log.log_info(str(datetime.datetime.now())+" >> "+message.name+": "+message.text)
-        if Main.check_easter_egg(text):
+        if Functions.check_easter_egg(text):
             return
         if len(text) == len(at_bot):
             response = 'Hi, @'+str(message.name)+' what would you like?'
@@ -52,7 +56,15 @@ def analyze_message(message):
                 response = 'That is not a possible command'
         # if the message mentions time
         elif 'time' in text:
-            response = 'The time is currently: '+str(datetime.datetime.now().time())
+            time = datetime.datetime.now().time()
+            hour = time.hour
+            minute = time.minute
+            if hour > 12:
+                hour = hour % 12
+                end = 'PM'
+            else:
+                end = 'AM'
+            response = 'The time is currently: '+str(hour)+':'+str(minute)+' '+end
         # if the message mentions weather
         elif 'weather' in text:
             response = 'The weather is currently: '+Main.weather.get_current_weather()
@@ -60,7 +72,7 @@ def analyze_message(message):
         elif 'event' in text:
             # checks if list command
             if 'list' in text:
-                response = Main.list_events()
+                response = Functions.list_events()
             # checks if the event command is properly formatted
             elif ':' not in text:
                 response = "Make sure you include a ':' after the name of the command and try again"
@@ -77,7 +89,7 @@ def analyze_message(message):
                     month = int(date[1])
                     day = int(date[0])
                     desc = info[2].strip()
-                    response = Main.create_event(name,year,month,day,desc)
+                    response = Functions.create_event(name,year,month,day,desc)
                 except Exception:
                     response = "An error occurred, check the format of the command"
                     Log.log_error(Exception)
@@ -85,14 +97,14 @@ def analyze_message(message):
             # checks if delete command
             elif 'delete' in text:
                 text = text.split(':')
-                Main.event_list.delete_event(text[1].strip())
+                Functions.event_list.delete_event(text[1].strip())
                 response = 'Okay I have removed the event'
             else:
                 response = "I'm sorry, I don't believe that is one of the options"
         elif 'reminder' in text:
             response = ''
             if 'list' in text:
-                response = Main.list_reminders()
+                response = Functions.list_reminders()
             elif ':' not in text:
                 response = "Make sure you include a ':' after the name of the command and try again"
             elif 'create' in text:
@@ -100,10 +112,10 @@ def analyze_message(message):
                 day = info[0].strip()
                 id = info[1].strip()
                 desc = info[2].strip()
-                response = Main.create_reminder(day, id, desc)
+                response = Functions.create_reminder(day, id, desc)
             elif 'delete' in text:
                 text = text.split(':')
-                Main.delete_reminder(text[1].strip())
+                Functions.delete_reminder(text[1].strip())
             else:
                 response = "I'm sorry, I don't believe that is one of the options"
         elif 'help' in text:
@@ -112,5 +124,5 @@ def analyze_message(message):
         else:
             response = "I'm sorry @"+message.name+", I don't understand"
         # posts the response in the group
-        Main.post_message(response)
+        Functions.post_message(response)
         Log.log_info((str(datetime.datetime.now())+" >> "+Main.BOT.name+": "+response))

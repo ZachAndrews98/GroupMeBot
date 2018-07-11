@@ -16,6 +16,6 @@ class weather:
         owm = pyowm.OWM(KEYS.WEATHER_KEY)
         observation = owm.weather_at_place(self.location)
         w = observation.get_weather()
-        weath += w.get_status() + ' Temperature: ' + str(int(w.get_temperature('fahrenheit')['temp'])) + \
-            '° Humidity: ' + str(w.get_humidity()) + '%'
+        weath += '\n'+w.get_status() + '\nTemperature: ' + str(int(w.get_temperature('fahrenheit')['temp'])) + \
+            '°\nHumidity: ' + str(w.get_humidity()) + '%'
         return weath

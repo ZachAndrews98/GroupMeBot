@@ -2,6 +2,8 @@
 # Github: ZachAndrews98
 import Main
 import datetime
+import Event_List
+import Reminders
 # checks to see if there are any events or reminders for the day and deletes old events
 def check_date():
     # if the time matches the threshold, check what the events for the day are, posts them
@@ -17,7 +19,7 @@ def check_date():
     response += "\nToday's reminders:\n"
     if len(reminders) != 0:
         for reminder in reminders:
-            response += '-- '+ str(reminder) + '\n'
+            response += '-- '+ str(reminder)
     else:
         response += 'None'
     post_message(response)
@@ -32,7 +34,7 @@ def list_events():
     events = Main.event_list.get_events_by_date(datetime.date.today())
     if len(events) != 0:
         for event in events:
-            response += '-- '+ str(event) + '\n'
+            response += '-- '+ str(event)
     else:
         response += 'None'
     response += '\nEvents: \n'
@@ -58,11 +60,18 @@ def create_reminder(day, id, desc):
 
 # creates the output for current and future reminders
 def list_reminders():
-    response = 'Reminders: \n'
+    response = 'Reminders Today:\n'
+    reminders = Main.reminder_list.get_reminders_by_day(datetime.date.today())
+    if len(reminders) != 0:
+        for reminer in reminders:
+            response += '-- '+ str(reminder)
+    else:
+        response += 'None'
+    response += '\nReminders: \n'
     reminders = Main.reminder_list.get_reminders()
     if len(reminders) != 0:
         for reminder in reminders:
-            response += '-- '+ str(reminder)+'\n'
+            response += '-- '+ str(reminder)
     else:
         response += 'None'
     return response

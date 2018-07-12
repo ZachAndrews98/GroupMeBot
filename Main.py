@@ -54,10 +54,12 @@ checked_events = False
 reminder_list = Reminders.reminder_list()
 # possible commands for the terminal and the bot
 commands = ['read','post','cancel','shutdown','help']
-bot_commands = ['help','time','weather','list events','create event','delete event']
+bot_commands = ['help','time','weather','list events','create event',
+                'delete event','list reminders','create reminder','delete reminder']
 
 if __name__ == '__main__':
     Log.log_debug(str(datetime.datetime.now())+" >> System Started")
+    Main.event_list.check_for_events()
     Functions.check_date()
     Main.run()
 
@@ -95,6 +97,8 @@ def run():
             date = str(input('Enter the date of the event\n')).split('/')
             name = str(input('Enter the name of the event\n'))
             desc = str(input('Enter the description of the event\n'))
+            if len(date[2]) != 4:
+                date[2] = '20'+date[2]
             response = Functions.create_event(name,int(date[2]),int(date[1]),int(date[0]),desc)
             print(response)
         elif command == 'list events':

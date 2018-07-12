@@ -3,21 +3,22 @@
 
 import datetime
 import os
+import time
 
 # list of events
 class event_list:
     event_list = list()
     def __init__(self):
         self.event_list.clear()
-        self.check_for_events()
 
     # adds event to list
     def add_event(self, event):
+        print(type(event))
         self.event_list.append(event)
         with open('events/event_list.evt','a') as file:
             file.write(str(event)+'\n')
         file.close()
-        self.remove_blank_lines()
+        #self.remove_blank_lines()
 
     # returns the entire list of events
     def get_event_list(self):
@@ -63,12 +64,12 @@ class event_list:
     def check_for_events(self):
         # if storage file exists
         try:
-            file = open('events/event_list.evt','r')
-            for line in file:
-                line = line.split(', ')
-                date = line[0].split('/')
-                self.event_list.append(event(line[1],datetime.date(int(date[2]),
-                                            int(date[0]),int(date[1])),line[2]))
+            with open('events/event_list.evt','r') as file:
+                for line in file:
+                    line = line.split(', ')
+                    date = line[0].split('/')
+                    self.event_list.append(event(line[1],datetime.date(int(date[2]),
+                                                int(date[0]),int(date[1])),line[2]))
             file.close()
         # creates file if doesn't exist
         except:

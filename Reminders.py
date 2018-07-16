@@ -6,13 +6,13 @@ class reminder_list:
 
     def __init__(self):
         self.reminders.clear()
-        self.check_for_reminders()
 
     def add_reminder(self, reminder):
         self.reminders.append(reminder)
         with open('reminders/reminders.rmndr','a') as file:
             file.write(str(reminder)+'\n')
         file.close()
+        self.remove_blank_lines()
 
     def delete_reminder(self, reminder_id):
         deleted = False
@@ -26,7 +26,7 @@ class reminder_list:
         file.close()
         return deleted
 
-    def get_reminders(self):
+    def get_reminder_list(self):
         return self.reminders
 
     def get_reminder(self, reminder_id):
@@ -58,6 +58,16 @@ class reminder_list:
             file.close()
             return
 
+    def remove_blank_lines(self):
+        with open('reminders/reminders.rmndr') as filehandle:
+            lines = filehandle.readlines()
+
+        with open('reminders/reminders.rmndr', 'w+') as file:
+            lines = filter(lambda x: x.strip(), lines)
+            file.writelines(lines)
+        filehandle.close()
+        file.close()
+
 class reminder:
     days = {'mon': 0, 'monday': 0, 'tues': 1, 'tuesday': 1, 'weds': 2, 'wednesday': 2, 'thurs': 3,
             'thursday': 3, 'fri': 4, 'friday': 4, 'sat': 5, 'saturday': 5, 'sun': 6, 'sunday': 6}
@@ -72,4 +82,4 @@ class reminder:
         self.desc = desc
 
     def __repr__(self):
-        return self.id+'- '+self.desc+'\n'
+        return self.Day+': '+self.id+'- '+self.desc

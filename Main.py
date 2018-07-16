@@ -34,8 +34,6 @@ s = session.Session(KEYS.GROUPME_API_KEY)
 manager = bots.Bots(s)
 # creates the message utility
 mess = messages.Messages(s,KEYS.GROUP_ID)
-# creates the weather utility
-weather = Weather.weather('Meadville, PA, US')
 # stores the bot, assuming only 1 bot to keep track of, if more bots just add more
 # variables and increment the index
 # also assumes a bot has already been made through groupme developer website
@@ -44,8 +42,8 @@ BOT = manager.list()[0]
 NEWEST_MESSAGE_READ_ID = None
 NEWEST_MESSAGE_ANALYZED_ID = None
 # constants for the time interval to check events
-CHECK_TIME = datetime.datetime.now().replace(hour=8, minute=33, second=0, microsecond=0)
-CHECK_TIME_END = datetime.datetime.now().replace(hour=8, minute=33, second=1, microsecond=0)
+CHECK_TIME = datetime.datetime.now().replace(hour=8, minute=30, second=0, microsecond=0)
+CHECK_TIME_END = datetime.datetime.now().replace(hour=8, minute=30, second=1, microsecond=0)
 # stores each event that is coming up
 event_list = Event_List.event_list()
 # flag to determine if the events have been checked yet
@@ -53,13 +51,13 @@ checked_events = False
 # stores reminders
 reminder_list = Reminders.reminder_list()
 # possible commands for the terminal and the bot
-commands = ['read','post','cancel','shutdown','help']
-bot_commands = ['help','time','weather','list events','create event',
+commands = ['help','time','weather','list events','create event',
                 'delete event','list reminders','create reminder','delete reminder']
 
 if __name__ == '__main__':
     Log.log_debug(str(datetime.datetime.now())+" >> System Started")
     Main.event_list.check_for_events()
+    Main.reminder_list.check_for_reminders()
     Functions.check_date()
     Main.run()
 
@@ -69,7 +67,12 @@ def run():
             # checks if there are any new messages
             if mess.list_after(Main.NEWEST_MESSAGE_ANALYZED_ID) is not None:
                 current_message = mess.list()[0] # newest message
-                Analyze.analyze_message(current_message) # analyzes the message
+                text = current_message.text.lower()
+                name = current_message.name
+                at_bot = '@'+Main.BOT.name
+                # checks if the bot is mentioned
+                if at_bot.lower() in text:
+                    Analyze.analyze_message(text,name) # analyzes the message
                 Main.NEWEST_MESSAGE_ANALYZED_ID = current_message.id # sets the new analyzed id
             if not Main.checked_events and datetime.datetime.now() > CHECK_TIME and \
                             datetime.datetime.now() < CHECK_TIME_END:
@@ -91,7 +94,7 @@ def run():
             if message.lower() == 'cancel':
                 run()
             Log.log_debug(str(datetime.datetime.now())+" >> Manual Posting: "+message)
-            post_message(message)
+            Functions.post_message(message)
         # get help information
         elif command == 'create event':
             date = str(input('Enter the date of the event\n')).split('/')

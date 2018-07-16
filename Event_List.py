@@ -18,7 +18,7 @@ class event_list:
         with open('events/event_list.evt','a') as file:
             file.write(str(event)+'\n')
         file.close()
-        #self.remove_blank_lines()
+        self.remove_blank_lines()
 
     # returns the entire list of events
     def get_event_list(self):

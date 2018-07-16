@@ -13,7 +13,6 @@ class event_list:
 
     # adds event to list
     def add_event(self, event):
-        print(type(event))
         self.event_list.append(event)
         with open('events/event_list.evt','a') as file:
             file.write(str(event)+'\n')

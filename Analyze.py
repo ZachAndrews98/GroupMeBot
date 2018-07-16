@@ -14,16 +14,17 @@ def analyze_message(text,name):
     response = ''
     at_bot = '@'+Main.BOT.name
     text = text[len(at_bot)+1:]
+    command = text.split(' ')[0]
     Log.log_info(str(datetime.datetime.now())+" >> "+name+": "+text)
     if Functions.check_easter_egg(text):
         return
     if text == at_bot:
         response = 'Hi, @'+str(name)+' what would you like?'
     # if the message mentions info
-    elif 'info' in text:
+    elif command == 'info':
         response = Info.get_info(text)
     # if the message mentions time
-    elif 'time' in text:
+    elif command == 'time':
         time = datetime.datetime.now().time()
         hour = time.hour
         minute = time.minute
@@ -34,18 +35,13 @@ def analyze_message(text,name):
             end = 'AM'
         response = 'The time is currently: '+str(hour)+':'+str(minute)+' '+end
     # if the message mentions weather
-    elif 'weather' in text:
+    elif command == 'weather':
         response = 'The weather is currently: '+Weather.get_current_weather()
-    # if the message mentions events
-    elif 'event' in text:
-        # checks if list command
-        if 'list' in text:
-            response = Functions.list_events()
-        # checks if the event command is properly formatted
-        elif ':' not in text:
+    # create command
+    elif command == 'create':
+        if ':' not in text:
             response = "Make sure you include a ':' after the name of the command and try again"
-        # checks if create command
-        elif 'create' in text:
+        elif 'event' in text:
             try:
                 info = text.split(':')[1].split(',')
                 date = info[0].split('/')
@@ -61,21 +57,7 @@ def analyze_message(text,name):
             except Exception:
                 response = "An error occurred, check the format of the command"
                 Log.log_error(Exception)
-
-        # checks if delete command
-        elif 'delete' in text:
-            text = text.split(':')
-            Functions.event_list.delete_event(text[1].strip())
-            response = 'Okay I have removed the event'
-        else:
-            response = "I'm sorry, I don't believe that is one of the options"
-    elif 'reminder' in text:
-        response = ''
-        if 'list' in text:
-            response = Functions.list_reminders()
-        elif ':' not in text:
-            response = "Make sure you include a ':' after the name of the command and try again"
-        elif 'create' in text:
+        elif 'reminder' in text:
             try:
                 info = text.split(':')[1].split(',')
                 day = info[0].strip()
@@ -85,12 +67,27 @@ def analyze_message(text,name):
             except Exception:
                 response = "An error occurred, check the format of the command"
                 Log.log_error(Exception)
-        elif 'delete' in text:
+        else:
+            response = "I'm sorry that is not an option"
+    # checks if list command
+    elif command == 'list':
+        if 'event' in text:
+            response = Functions.list_events()
+        elif 'reminder' in text:
+            response = Functions.list_reminders()
+        else:
+            response = "I'm sorry that is not an option"
+    elif command == 'delete':
+        if 'event' in text:
+            text = text.split(':')
+            Functions.event_list.delete_event(text[1].strip())
+            response = 'Okay I have removed the event'
+        elif 'reminder' in text:
             text = text.split(':')
             Functions.delete_reminder(text[1].strip())
         else:
-            response = "I'm sorry, I don't believe that is one of the options"
-    elif 'help' in text:
+            response = "I'm sorry that is not an option"
+    elif command == 'help':
         response = 'Heres a list of my commands:\n'+str(Main.commands)+\
                     '\nUse "Info" <command> for more info on a command'
     else:

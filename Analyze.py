@@ -8,14 +8,16 @@ import Weather
 import Log
 import Functions
 import Info
+import Chat
 
 def analyze_message(text,name):
     response = ''
     at_bot = '@'+Main.BOT.name
+    text = text[len(at_bot)+1:]
     Log.log_info(str(datetime.datetime.now())+" >> "+name+": "+text)
     if Functions.check_easter_egg(text):
         return
-    if len(text) == len(at_bot):
+    if text == at_bot:
         response = 'Hi, @'+str(name)+' what would you like?'
     # if the message mentions info
     elif 'info' in text:
@@ -92,7 +94,7 @@ def analyze_message(text,name):
         response = 'Heres a list of my commands:\n'+str(Main.commands)+\
                     '\nUse "Info" <command> for more info on a command'
     else:
-        response = "I'm sorry @"+name+", I don't understand"
+        response = Chat.chat(text)
     # posts the response in the group
     Functions.post_message(response)
-    Log.log_info((str(datetime.datetime.now())+" >> "+Main.BOT.name+": "+response))
+    Log.log_info((str(datetime.datetime.now())+" >> "+Main.BOT.name+": "+str(response)))

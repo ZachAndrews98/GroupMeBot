@@ -80,7 +80,7 @@ def analyze_message(text,name):
     elif command == 'delete':
         if 'event' in text:
             text = text.split(':')
-            Functions.event_list.delete_event(text[1].strip())
+            Functions.delete_event(text[1].strip())
             response = 'Okay I have removed the event'
         elif 'reminder' in text:
             text = text.split(':')

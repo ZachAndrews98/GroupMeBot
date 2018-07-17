@@ -36,8 +36,8 @@ def list_events():
         for event in events:
             response += '-- '+ str(event)
     else:
-        response += 'None'
-    response += '\nEvents:\n'
+        response += 'None\n'
+    response += 'Events:\n'
     events = Main.event_list.get_event_list()
     if len(events) != 0:
         for event in events:
@@ -66,8 +66,8 @@ def list_reminders():
         for reminer in reminders:
             response += '-- '+ str(reminder) + '\n'
     else:
-        response += 'None'
-    response += '\nReminders: \n'
+        response += 'None\n'
+    response += 'Reminders: \n'
     reminders = Main.reminder_list.get_reminder_list()
     if len(reminders) != 0:
         for reminder in reminders:

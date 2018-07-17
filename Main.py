@@ -21,7 +21,6 @@ import datetime
 
 # local imports
 import KEYS
-import Weather
 import Log
 import Event_List
 import Reminders
@@ -37,7 +36,12 @@ mess = messages.Messages(s,KEYS.GROUP_ID)
 # stores the bot, assuming only 1 bot to keep track of, if more bots just add more
 # variables and increment the index
 # also assumes a bot has already been made through groupme developer website
-BOT = manager.list()[0]
+try:
+    BOT = manager.list()[0]
+except:
+    print("No bot present, creating bot")
+    bot_name = str(input("What would you like to name the bot?\n"))
+    BOT = manager.create(bot_name,KEYS.GROUP_ID)
 # stores the ids of the most recently analyzed/read message
 NEWEST_MESSAGE_READ_ID = None
 NEWEST_MESSAGE_ANALYZED_ID = None

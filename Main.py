@@ -12,6 +12,7 @@
     Developer site.
 """
 # nonlocal imports
+from groupy import Client
 from groupy import session
 from groupy.api import bots
 from groupy.api import messages
@@ -27,21 +28,33 @@ import Reminders
 import Analyze
 import Main
 import Functions
+
+client = Client.from_token(KEYS.get_groupme_key())
 # creates new session (uses api key from groupme), needed for all objects
-s = session.Session(KEYS.GROUPME_API_KEY)
+s = session.Session(KEYS.get_groupme_key())
 # create the bot manager
 manager = bots.Bots(s)
-# creates the message utility
-mess = messages.Messages(s,KEYS.GROUP_ID)
 # stores the bot, assuming only 1 bot to keep track of, if more bots just add more
 # variables and increment the index
 # also assumes a bot has already been made through groupme developer website
 try:
     BOT = manager.list()[0]
 except:
-    print("No bot present, creating bot")
-    bot_name = str(input("What would you like to name the bot?\n"))
-    BOT = manager.create(bot_name,KEYS.GROUP_ID)
+    bot_name = KEYS.get_bot_name()
+    group_name = KEYS.get_group_name()
+    # print("No bot present, creating bot")
+    # bot_name = str(input("What would you like to name the bot?\n"))
+    # group_name = str(input("What is the name of the group the bot should join?\n"))
+    group_id = None
+    for group in client.groups.list():
+        if group.name == group_name:
+            group_id = group.id
+    if group_id == None:
+        print("That group does not exist, aborting bot creation")
+    else:
+        BOT = manager.create(bot_name,group_id)
+# creates the message utility
+mess = messages.Messages(s,BOT.group_id)
 # stores the ids of the most recently analyzed/read message
 NEWEST_MESSAGE_READ_ID = None
 NEWEST_MESSAGE_ANALYZED_ID = None
@@ -59,6 +72,12 @@ commands = ['help','time','weather','list events','create event',
                 'delete event','list reminders','create reminder','delete reminder']
 
 if __name__ == '__main__':
+    # members = groups.members
+    # for member in members:
+    #     if member.name == 'Zachary Andrews':
+    #         id = member.id
+    # mention = Mentions(loci=[(1,15)],user_ids=[str(id)])
+    # Functions.post_message_mention('@',mention)
     Log.log_debug(str(datetime.datetime.now())+" >> System Started")
     Main.event_list.check_for_events()
     Main.reminder_list.check_for_reminders()

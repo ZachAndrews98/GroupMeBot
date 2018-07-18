@@ -94,6 +94,9 @@ def delete_reminder(name):
 def post_message(message):
     Main.manager.post(str(Main.BOT.bot_id),str(message))
 
+def post_message_mention(message,mention):
+    Main.manager.post(str(Main.BOT.bot_id),str(message),attachments=mention)
+
 # childish easter eggs cause I am a child
 def check_easter_egg(text):
     time = datetime.datetime.now().time

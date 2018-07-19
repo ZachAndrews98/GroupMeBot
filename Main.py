@@ -7,9 +7,8 @@
     Groupy to interface with GroupMe's API, can post and read messages from the
     terminal. Will analyze any message using the '@' symbol and the name of the
     bot in the group. The bot can currently tell the time, weather, and create
-    and keep track of events as well as reminders. Currently cannot create a bot
-    through this, so in order to use you must create a bot via GroupMe's
-    Developer site.
+    and keep track of events as well as reminders. There is also a very basic
+    chatbot implementation using the ChatterBot library.
 """
 # nonlocal imports
 from groupy import Client
@@ -19,6 +18,7 @@ from groupy.api import messages
 from groupy.api.attachments import Mentions
 from groupy.api import groups
 import datetime
+from pathlib import Path
 
 # local imports
 import KEYS
@@ -28,6 +28,12 @@ import Reminders
 import Analyze
 import Main
 import Functions
+
+config_file = Path("./config.ini")
+if not config_file.is_file():
+    KEYS.new_config()
+while KEYS.get_groupme_key() == "":
+    input("Please enter a GroupMe API Key in config.ini")
 
 client = Client.from_token(KEYS.get_groupme_key())
 # creates new session (uses api key from groupme), needed for all objects
@@ -40,19 +46,24 @@ manager = bots.Bots(s)
 try:
     BOT = manager.list()[0]
 except:
-    bot_name = KEYS.get_bot_name()
-    group_name = KEYS.get_group_name()
-    # print("No bot present, creating bot")
-    # bot_name = str(input("What would you like to name the bot?\n"))
-    # group_name = str(input("What is the name of the group the bot should join?\n"))
-    group_id = None
-    for group in client.groups.list():
-        if group.name == group_name:
-            group_id = group.id
-    if group_id == None:
-        print("That group does not exist, aborting bot creation")
-    else:
-        BOT = manager.create(bot_name,group_id)
+    while True:
+        bot_name = KEYS.get_bot_name()
+        group_name = KEYS.get_group_name()
+        group_id = None
+        for group in client.groups.list():
+            if group.name == group_name:
+                group_id = group.id
+        if group_id == None or bot_name == "":
+            missing = "Missing items: "
+            if group_id == None:
+                missing += " Group Name"
+            if bot_name == "":
+                missing += " Bot Name"
+            print("Missing or incorrect information in config file, please enter info and hit enter")
+            input(missing)
+        else:
+            BOT = manager.create(bot_name,group_id)
+            break
 # creates the message utility
 mess = messages.Messages(s,BOT.group_id)
 # stores the ids of the most recently analyzed/read message

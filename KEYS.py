@@ -12,7 +12,6 @@ def new_config():
     config.set('Keys', '; Important keys for access to APIs')
     config.set('Keys', 'GroupMe', "")
     config.set('Keys', 'Weather', "")
-    config.add_section('Keywords')
     config.add_section('Bot')
     config.set('Bot', '; Key information for Bot creation')
     config.set('Bot', 'Bot Name', "")

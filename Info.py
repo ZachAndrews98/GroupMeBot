@@ -1,5 +1,5 @@
 
-TIME_DESC = "Responds with the current time"
+TIME_DESC = "Responds with the current time, I'm aware of the redundancy
 WEATHER_DESC = "Gives the current weather in Meadville, PA"
 LIST_REMINDER_DESC = "Lists current day's reminders followed by all reminders scheduled"
 LIST_EVENT_DESC = "Lists current day's events followed by all events scheduled"
@@ -10,8 +10,8 @@ DELETE_EVENT_DESC = "Deletes the event with the inputted name"
 HELP_DESC = "Displays all commands that are available"
 INFO_DESC = "Gives further information on the inputted command"
 
-TIME_FORMAT = "Just ask what the time is"
-WEATHER_FORMAT = "Just ask what the weather is like"
+TIME_FORMAT = "time"
+WEATHER_FORMAT = "weather"
 LIST_REMINDER_FORMAT = "list reminders"
 LIST_EVENT_FORMAT = "list events"
 CREATE_REMINDER_FORMAT = "'create reminder: <day of week for reminder>, <name of reminder>, <reminder description>'"

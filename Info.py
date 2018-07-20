@@ -1,5 +1,5 @@
 
-TIME_DESC = "Responds with the current time, I'm aware of the redundancy
+TIME_DESC = "Responds with the current time, I'm aware of the redundancy"
 WEATHER_DESC = "Gives the current weather in Meadville, PA"
 LIST_REMINDER_DESC = "Lists current day's reminders followed by all reminders scheduled"
 LIST_EVENT_DESC = "Lists current day's events followed by all events scheduled"

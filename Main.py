@@ -28,6 +28,7 @@ import Reminders
 import Analyze
 import Main
 import Functions
+import Info
 
 config_file = Path("./config.ini")
 if not config_file.is_file():
@@ -54,11 +55,11 @@ except:
             if group.name == group_name:
                 group_id = group.id
         if group_id == None or bot_name == "":
-            missing = "Missing items: "
+            missing = "Missing items:"
             if group_id == None:
-                missing += " Group Name"
+                missing += "\nGroup Name"
             if bot_name == "":
-                missing += " Bot Name"
+                missing += "\nBot Name"
             print("Missing or incorrect information in config file, please enter info and hit enter")
             input(missing)
         else:
@@ -79,8 +80,12 @@ checked_events = False
 # stores reminders
 reminder_list = Reminders.reminder_list()
 # possible commands for the terminal and the bot
-commands = ['help','time','weather','list events','create event',
+commands = ['help','info','time','weather','list events','create event',
                 'delete event','list reminders','create reminder','delete reminder']
+                
+console_commands = ['help','time','weather','list events','create event',
+                'delete event','list reminders','create reminder',
+                'delete reminder','info','shutdown','read','post']
 
 if __name__ == '__main__':
     # members = groups.members
@@ -92,7 +97,8 @@ if __name__ == '__main__':
     Log.log_debug(str(datetime.datetime.now())+" >> System Started")
     Main.event_list.check_for_events()
     Main.reminder_list.check_for_reminders()
-    Functions.check_date()
+    response = Functions.check_date()
+    Functions.post_message(response)
     Main.run()
 
 def run():
@@ -160,8 +166,12 @@ def run():
         elif command == 'help':
             Log.log_debug(str(datetime.datetime.now())+" >> Help")
             print("Possible Commands:")
-            for command in commands:
+            for command in console_commands:
                 print("\t"+command)
+        elif command == 'info':
+            Log.log_debug(str(datetime.datetime.now())+" >> Info")
+            command = str(input("What command would you like info about?\n"))
+            print(Info.get_info(command))
         # shutdown the system
         elif command == 'shutdown':
             Log.log_debug(str(datetime.datetime.now())+" >> System Shutdown")

@@ -10,6 +10,8 @@ import Functions
 import Info
 import Chat
 
+""" Checks if a message directed at the bot is a command or part of a conversation """
+
 def analyze_message(text,name):
     response = ''
     at_bot = '@'+Main.BOT.name
@@ -80,15 +82,14 @@ def analyze_message(text,name):
     elif command == 'delete':
         if 'event' in text:
             text = text.split(':')
-            Functions.delete_event(text[1].strip())
-            response = 'Okay I have removed the event'
+            response = Functions.delete_event(text[1].strip())
         elif 'reminder' in text:
             text = text.split(':')
-            Functions.delete_reminder(text[1].strip())
+            response = Functions.delete_reminder(text[1].strip())
         else:
             response = "I'm sorry that is not an option"
     elif command == 'help':
-        response = 'Heres a list of my commands:\n'+str(Main.commands)+\
+        response = 'Heres a list of my commands:\n'+', '.join(Main.commands[0:10])+\
                     '\nUse "Info" <command> for more info on a command'
     else:
         response = Chat.chat(text)

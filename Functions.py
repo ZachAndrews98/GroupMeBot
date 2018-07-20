@@ -22,11 +22,11 @@ def check_date():
             response += '-- '+ str(reminder)
     else:
         response += 'None'
-    post_message(response)
     Main.checked_events = True
     #checks if any events have expired
     if Main.checked_events and datetime.datetime.now() > Main.CHECK_TIME_END:
         Main.checked_events = False
+    return response
 
 # creates output for current and future events
 def list_events():
@@ -82,6 +82,7 @@ def delete_event(name):
         response = 'Okay I have removed the event'
     else:
         response = 'That reminder does not exist'
+    return response
 
 # deletes reminder
 def delete_reminder(name):
@@ -89,6 +90,7 @@ def delete_reminder(name):
         response = 'Okay I have removed the reminder'
     else:
         response = 'That reminder does not exist'
+    return response
 
 # posts message into group
 def post_message(message):

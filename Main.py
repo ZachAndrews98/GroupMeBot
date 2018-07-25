@@ -19,6 +19,8 @@ from groupy.api.attachments import Mentions
 from groupy.api import groups
 import datetime
 from pathlib import Path
+import webbrowser
+import time
 
 # local imports
 import KEYS
@@ -34,7 +36,10 @@ config_file = Path("./config.ini")
 if not config_file.is_file():
     KEYS.new_config()
 while KEYS.get_groupme_key() == "":
-    input("Please enter a GroupMe API Key in config.ini")
+    print("Please enter a GroupMe API Key in config.ini and then press enter to continue")
+    time.sleep(1)
+    webbrowser.open(config_file)
+    input()
 
 client = Client.from_token(KEYS.get_groupme_key())
 # creates new session (uses api key from groupme), needed for all objects
@@ -61,7 +66,10 @@ except:
             if bot_name == "":
                 missing += "\nBot Name"
             print("Missing or incorrect information in config file, please enter info and hit enter")
-            input(missing)
+            print(missing)
+            time.sleep(1)
+            webbrowser.open(config_file)
+            input()
         else:
             BOT = manager.create(bot_name,group_id)
             break
@@ -82,7 +90,7 @@ reminder_list = Reminders.reminder_list()
 # possible commands for the terminal and the bot
 commands = ['help','info','time','weather','list events','create event',
                 'delete event','list reminders','create reminder','delete reminder']
-                
+
 console_commands = ['help','time','weather','list events','create event',
                 'delete event','list reminders','create reminder',
                 'delete reminder','info','shutdown','read','post']

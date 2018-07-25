@@ -38,7 +38,7 @@ if not config_file.is_file():
 while KEYS.get_groupme_key() == "":
     print("Please enter a GroupMe API Key in config.ini and then press enter to continue")
     time.sleep(1)
-    webbrowser.open(config_file)
+    webbrowser.open('./config.ini')
     input()
 
 client = Client.from_token(KEYS.get_groupme_key())
@@ -68,7 +68,7 @@ except:
             print("Missing or incorrect information in config file, please enter info and hit enter")
             print(missing)
             time.sleep(1)
-            webbrowser.open(config_file)
+            webbrowser.open('./config.ini')
             input()
         else:
             BOT = manager.create(bot_name,group_id)

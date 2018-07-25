@@ -14,6 +14,20 @@ of events as well as reminders for the group. These are kept in files under
 implementation that uses the [ChatterBot]("https://github.com/gunthercox/ChatterBot")
 library for basic back and forth conversation.
 
+## Startup
+
+First clone the repository to your local machine. In a terminal execute
+`pip3 install -r requirements.txt` to download all required packages. Once all
+packages have downloaded run `python3 Main.py` to begin running the program. On
+startup a config file will be generated and you will be prompted to enter a
+[GroupMe API key]("https://dev.groupme.com/"). This key is INCREDIBLY important
+and should not be shared with ANYONE, the program will also not function without
+this. If you would like current weather capabilities you will also have to get
+a key for [OpenWeatherMap(OWM)]("https://home.openweathermap.org/") and put that
+in the configuration file as well. Finally you will have to give a name for your
+bot and the group for your bot to monitor. This group you must at least initially
+be a member of since the group will be accessed using your GroupMe API key.
+
 ## Capabilities
 
 The bot can post responses to commands given in the group chat if the message is

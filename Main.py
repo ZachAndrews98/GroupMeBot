@@ -11,12 +11,16 @@
     chatbot implementation using the ChatterBot library.
 """
 # nonlocal imports
-from groupy import Client
-from groupy import session
-from groupy.api import bots
-from groupy.api import messages
-from groupy.api.attachments import Mentions
-from groupy.api import groups
+try:
+    from groupy import Client
+    from groupy import session
+    from groupy.api import bots
+    from groupy.api import messages
+    from groupy.api.attachments import Mentions
+    from groupy.api import groups
+except:
+    print("Required packages not installed, please run pip3 install -r requirements.txt")
+    quit()
 import datetime
 from pathlib import Path
 import webbrowser

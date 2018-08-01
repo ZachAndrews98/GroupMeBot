@@ -1,4 +1,11 @@
-from chatterbot import ChatBot
+# Created by Zachary Andrews
+# Github: ZachAndrews98
+
+try:
+    from chatterbot import ChatBot
+except:
+    print("Required packages not installed, please run pip3 install -r requirements.txt")
+    quit()
 
 chatbot = ChatBot(
     'Ron Obvious',

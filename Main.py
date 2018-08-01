@@ -10,21 +10,6 @@
     and keep track of events as well as reminders. There is also a very basic
     chatbot implementation using the ChatterBot library.
 """
-# nonlocal imports
-try:
-    from groupy import Client
-    from groupy import session
-    from groupy.api import bots
-    from groupy.api import messages
-    from groupy.api.attachments import Mentions
-    from groupy.api import groups
-except:
-    print("Required packages not installed, please run pip3 install -r requirements.txt")
-    quit()
-import datetime
-from pathlib import Path
-import webbrowser
-import time
 
 # local imports
 import KEYS
@@ -36,14 +21,30 @@ import Main
 import Functions
 import Info
 
-config_file = Path("./config.ini")
-if not config_file.is_file():
-    KEYS.new_config()
-while KEYS.get_groupme_key() == "":
-    print("Please enter a GroupMe API Key in config.ini and then press enter to continue")
-    time.sleep(1)
-    webbrowser.open('./config.ini')
-    input()
+# nonlocal imports
+import datetime
+from pathlib import Path
+import webbrowser
+import time
+try:
+    from groupy import Client
+    from groupy import session
+    from groupy.api import bots
+    from groupy.api import messages
+    from groupy.api.attachments import Mentions
+    from groupy.api import groups
+
+    config_file = Path("./config.ini")
+    if not config_file.is_file():
+        KEYS.new_config()
+    while KEYS.get_groupme_key() == "":
+        print("Please enter a GroupMe API Key in config.ini and then press enter to continue")
+        time.sleep(1)
+        webbrowser.open('./config.ini')
+        input()
+except:
+    print("Required packages not installed, please run pip3 install -r requirements.txt")
+    quit()
 
 client = Client.from_token(KEYS.get_groupme_key())
 # creates new session (uses api key from groupme), needed for all objects

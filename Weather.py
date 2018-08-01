@@ -1,13 +1,13 @@
 # Created by Zachary Andrews
 # Github: ZachAndrews98
 
+import KEYS
+
 try:
     import pyowm
 except:
     print("Required packages not installed, please run pip3 install -r requirements.txt")
     quit()
-
-import KEYS
 
 def get_current_weather():
     weath = ""

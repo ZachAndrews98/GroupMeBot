@@ -1,14 +1,16 @@
 # Created by Zachary Andrews
 # Github: ZachAndrews98
 
-import datetime
-
+# local imports
 import Main
 import Weather
 import Log
 import Functions
 import Info
 import Chat
+
+# nonlocal imports
+import datetime
 
 """ Checks if a message directed at the bot is a command or part of a conversation """
 

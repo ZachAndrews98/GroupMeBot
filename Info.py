@@ -1,3 +1,5 @@
+# Created by Zachary Andrews
+# Github: ZachAndrews98
 
 TIME_DESC = "Responds with the current time, I'm aware of the redundancy"
 WEATHER_DESC = "Gives the current weather in Meadville, PA"
@@ -65,4 +67,3 @@ def get_info(text):
     else:
         response = 'That is not a possible command'
     return response
-

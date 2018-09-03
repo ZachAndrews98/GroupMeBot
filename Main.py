@@ -101,12 +101,6 @@ console_commands = ['help','time','weather','list events','create event',
                 'delete reminder','info','shutdown','read','post']
 
 if __name__ == '__main__':
-    # members = groups.members
-    # for member in members:
-    #     if member.name == 'Zachary Andrews':
-    #         id = member.id
-    # mention = Mentions(loci=[(1,15)],user_ids=[str(id)])
-    # Functions.post_message_mention('@',mention)
     Log.log_debug(str(datetime.datetime.now())+" >> System Started")
     Main.event_list.check_for_events()
     Main.reminder_list.check_for_reminders()

@@ -1,7 +1,7 @@
 """
     GroupMe Bot
-    # Created by Zachary Andrews
-    # Github: ZachAndrews98
+    Created by Zachary Andrews
+    Github: ZachAndrews98
 
     Creates a bot that can be run from the terminal for the GroupMe app. Uses
     Groupy to interface with GroupMe's API, can post and read messages from the
@@ -43,7 +43,7 @@ try:
         webbrowser.open('./config.ini')
         input()
 except:
-    print("Required packages not installed, please run pip3 install -r requirements.txt")
+    print("Required packages not installed, please run 'pip3 install -r requirements.txt'")
     quit()
 
 client = Client.from_token(KEYS.get_groupme_key())

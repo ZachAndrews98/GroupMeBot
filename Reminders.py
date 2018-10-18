@@ -1,6 +1,8 @@
 # Created by Zachary Andrews
 # Github: ZachAndrews98
 
+file_name = '.reminders/reminders.rmndr'
+
 class reminder_list:
     reminders = list()
 
@@ -9,14 +11,14 @@ class reminder_list:
 
     def add_reminder(self, reminder):
         self.reminders.append(reminder)
-        with open('reminders/reminders.rmndr','a') as file:
+        with open(file_name,'a') as file:
             file.write(str(reminder)+'\n')
         file.close()
         self.remove_blank_lines()
 
     def delete_reminder(self, reminder_id):
         deleted = False
-        with open('reminders/reminders.rmndr','w+') as file:
+        with open(file_name,'w+') as file:
             for reminder in list(self.reminders):
                 if reminder.id != reminder_id:
                     file.write(str(reminder)+'\n')
@@ -44,7 +46,7 @@ class reminder_list:
     def check_for_reminders(self):
         # if storage file exists
         try:
-            file = open('reminders/reminders.rmndr','r')
+            file = open(file_name,'r')
             for line in file:
                 line = line.split(':')
                 day = line[0].strip()
@@ -54,15 +56,15 @@ class reminder_list:
             file.close()
         # creates file if doesn't exist
         except:
-            file = open('reminders/reminders.rmndr','w+')
+            file = open(file_name,'w+')
             file.close()
             return
 
     def remove_blank_lines(self):
-        with open('reminders/reminders.rmndr') as filehandle:
+        with open(file_name) as filehandle:
             lines = filehandle.readlines()
 
-        with open('reminders/reminders.rmndr', 'w+') as file:
+        with open(file_name, 'w+') as file:
             lines = filter(lambda x: x.strip(), lines)
             file.writelines(lines)
         filehandle.close()

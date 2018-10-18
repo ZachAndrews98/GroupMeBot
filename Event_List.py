@@ -5,6 +5,8 @@ import datetime
 import os
 import time
 
+file_name = '.events/event_list.evt'
+
 # list of events
 class event_list:
     event_list = list()
@@ -14,7 +16,7 @@ class event_list:
     # adds event to list
     def add_event(self, event):
         self.event_list.append(event)
-        with open('events/event_list.evt','a') as file:
+        with open(file_name,'a') as file:
             file.write(str(event)+'\n')
         file.close()
         self.remove_blank_lines()
@@ -39,7 +41,7 @@ class event_list:
 
     # deletes event by name
     def delete_event(self,event_name):
-        with open('events/event_list.evt','w+') as file:
+        with open(file_name,'w+') as file:
             for event in list(self.event_list):
                 if event.name != event_name:
                     file.write(str(event)+'\n')
@@ -50,7 +52,7 @@ class event_list:
 
     # deletes all events on or before a given date
     def delete_event_before_date(self,date):
-        with open('events/event_list.evt','w+') as file:
+        with open(file_name,'w+') as file:
             for event in list(self.event_list):
                 if event.date > date:
                     file.write(str(event)+'\n')
@@ -63,7 +65,7 @@ class event_list:
     def check_for_events(self):
         # if storage file exists
         try:
-            with open('events/event_list.evt','r') as file:
+            with open(file_name,'r') as file:
                 for line in file:
                     line = line.split(', ')
                     date = line[0].split('/')
@@ -72,15 +74,15 @@ class event_list:
             file.close()
         # creates file if doesn't exist
         except:
-            file = open('events/event_list.evt','w+')
+            file = open(file_name,'w+')
             file.close()
             return
 
     def remove_blank_lines(self):
-        with open('events/event_list.evt') as filehandle:
+        with open(file_name) as filehandle:
             lines = filehandle.readlines()
 
-        with open('events/event_list.evt', 'w+') as file:
+        with open(file_name, 'w+') as file:
             lines = filter(lambda x: x.strip(), lines)
             file.writelines(lines)
         filehandle.close()

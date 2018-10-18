@@ -4,8 +4,8 @@
 import logging
 import logging.handlers
 
-LOG_FILENAME = './logs/log.out'
-ERROR_FILENAME = './logs/error.out'
+LOG_FILENAME = './.logs/log.out'
+ERROR_FILENAME = './.logs/error.out'
 MAX_BYTES = 50000*10^8
 # creates general log
 logger = logging.getLogger('General')

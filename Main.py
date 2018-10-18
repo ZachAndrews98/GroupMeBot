@@ -26,6 +26,9 @@ import datetime
 from pathlib import Path
 import webbrowser
 import time
+
+Log.log_debug(str(datetime.datetime.now())+" >> System Started")
+
 try:
     from groupy import Client
     from groupy import session
@@ -101,7 +104,6 @@ console_commands = ['help','time','weather','list events','create event',
                 'delete reminder','info','shutdown','read','post']
 
 if __name__ == '__main__':
-    Log.log_debug(str(datetime.datetime.now())+" >> System Started")
     Main.event_list.check_for_events()
     Main.reminder_list.check_for_reminders()
     response = Functions.check_date()

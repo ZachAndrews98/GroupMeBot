@@ -34,6 +34,7 @@ DELETE_EVENT_INFO = [DELETE_EVENT_DESC, DELETE_EVENT_FORMAT]
 HELP_INFO = [HELP_DESC, HELP_FORMAT]
 INFO_INFO = [INFO_DESC, INFO_FORMAT]
 
+
 def get_info(text):
     if 'time' in text:
         response = 'Info: ' + TIME_INFO[0] + '\nFormat: ' + TIME_INFO[1]
@@ -41,23 +42,29 @@ def get_info(text):
         response = 'Info: ' + WEATHER_INFO[0] + '\nFormat: ' + WEATHER_INFO[1]
     elif 'list' in text:
         if 'events' in text:
-            response = 'Info: ' + LIST_EVENT_INFO[0] + '\nFormat: ' + LIST_EVENT_INFO[1]
+            response = 'Info: ' + \
+                LIST_EVENT_INFO[0] + '\nFormat: ' + LIST_EVENT_INFO[1]
         elif 'reminders' in text:
-            response = 'Info: ' + LIST_REMINDER_INFO[0] + '\nFormat: ' + LIST_REMINDER_INFO[1]
+            response = 'Info: ' + \
+                LIST_REMINDER_INFO[0] + '\nFormat: ' + LIST_REMINDER_INFO[1]
         else:
             response = 'That is not a possible command'
     elif 'create' in text:
         if 'event' in text:
-            response = 'Info: ' + CREATE_EVENT_INFO[0] + '\nFormat: ' + CREATE_EVENT_INFO[1]
+            response = 'Info: ' + \
+                CREATE_EVENT_INFO[0] + '\nFormat: ' + CREATE_EVENT_INFO[1]
         elif 'reminder' in text:
-            response = 'Info: ' + CREATE_REMINDER_INFO[0] + '\nFormat: ' + CREATE_REMINDER_INFO[1]
+            response = 'Info: ' + \
+                CREATE_REMINDER_INFO[0] + '\nFormat: ' + CREATE_REMINDER_INFO[1]
         else:
             response = 'That is not a possible command'
     elif 'delete' in text:
         if 'event' in text:
-            response = 'Info: ' + DELETE_EVENT_INFO[0] + '\nFormat: ' + DELETE_EVENT_INFO[1]
+            response = 'Info: ' + \
+                DELETE_EVENT_INFO[0] + '\nFormat: ' + DELETE_EVENT_INFO[1]
         elif 'reminder' in text:
-            response = 'Info: ' + DELETE_REMINDER_INFO[0] + '\nFormat: ' + DELETE_REMINDER_INFO[1]
+            response = 'Info: ' + \
+                DELETE_REMINDER_INFO[0] + '\nFormat: ' + DELETE_REMINDER_INFO[1]
         else:
             response = 'That is not a possible command'
     elif 'help' in text:

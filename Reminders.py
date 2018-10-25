@@ -3,6 +3,7 @@
 
 file_name = '.reminders/reminders.rmndr'
 
+
 class reminder_list:
     reminders = list()
 
@@ -11,17 +12,17 @@ class reminder_list:
 
     def add_reminder(self, reminder):
         self.reminders.append(reminder)
-        with open(file_name,'a') as file:
-            file.write(str(reminder)+'\n')
+        with open(file_name, 'a') as file:
+            file.write(str(reminder) + '\n')
         file.close()
         self.remove_blank_lines()
 
     def delete_reminder(self, reminder_id):
         deleted = False
-        with open(file_name,'w+') as file:
+        with open(file_name, 'w+') as file:
             for reminder in list(self.reminders):
                 if reminder.id != reminder_id:
-                    file.write(str(reminder)+'\n')
+                    file.write(str(reminder) + '\n')
                 else:
                     self.reminders.remove(reminder)
                     deleted = True
@@ -46,7 +47,7 @@ class reminder_list:
     def check_for_reminders(self):
         # if storage file exists
         try:
-            file = open(file_name,'r')
+            file = open(file_name, 'r')
             for line in file:
                 line = line.split(':')
                 day = line[0].strip()
@@ -55,8 +56,8 @@ class reminder_list:
                 self.reminders.append(reminder(day, id, desc))
             file.close()
         # creates file if doesn't exist
-        except:
-            file = open(file_name,'w+')
+        except BaseException:
+            file = open(file_name, 'w+')
             file.close()
             return
 
@@ -70,9 +71,23 @@ class reminder_list:
         filehandle.close()
         file.close()
 
+
 class reminder:
-    days = {'mon': 0, 'monday': 0, 'tues': 1, 'tuesday': 1, 'weds': 2, 'wednesday': 2, 'thurs': 3,
-            'thursday': 3, 'fri': 4, 'friday': 4, 'sat': 5, 'saturday': 5, 'sun': 6, 'sunday': 6}
+    days = {
+        'mon': 0,
+        'monday': 0,
+        'tues': 1,
+        'tuesday': 1,
+        'weds': 2,
+        'wednesday': 2,
+        'thurs': 3,
+        'thursday': 3,
+        'fri': 4,
+        'friday': 4,
+        'sat': 5,
+        'saturday': 5,
+        'sun': 6,
+        'sunday': 6}
     day = None
     id = None
     desc = None
@@ -84,4 +99,4 @@ class reminder:
         self.desc = desc
 
     def __repr__(self):
-        return self.Day+': '+self.id+'- '+self.desc
+        return self.Day + ': ' + self.id + '- ' + self.desc

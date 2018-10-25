@@ -5,9 +5,10 @@ import KEYS
 
 try:
     import pyowm
-except:
+except BaseException:
     print("Required packages not installed, please run pip3 install -r requirements.txt")
     quit()
+
 
 def get_current_weather():
     weath = ""
@@ -15,8 +16,8 @@ def get_current_weather():
         owm = pyowm.OWM(KEYS.get_weather_key())
         observation = owm.weather_at_place('Meadville, PA, US')
         w = observation.get_weather()
-        weath += '\n'+w.get_status() + '\nTemperature: ' + str(int(w.get_temperature('fahrenheit')['temp'])) + \
-            '°F\nHumidity: ' + str(w.get_humidity()) + '%'
+        weath += '\n' + w.get_status() + '\nTemperature: ' + str(int(w.get_temperature('fahrenheit')
+                                                                     ['temp'])) + '°F\nHumidity: ' + str(w.get_humidity()) + '%'
         return weath
-    except:
+    except BaseException:
         return "No key entered in configuration file, weather cannot be given"

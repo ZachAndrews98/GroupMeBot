@@ -2,9 +2,6 @@
 
 ## About
 
-Created by Zachary Andrews
-Github: ZachAndrews98
-
 Creates and runs a bot from the terminal for the GroupMe app. Uses [Groupy](https://github.com/rhgrant10/Groupy)
 to interface with GroupMe's API. Can post and read messages from the terminal.
 Will analyze any message using the '@' symbol and the name of the bot in the
@@ -18,8 +15,8 @@ library for basic back and forth conversation.
 
 First clone the repository to your local machine. In a terminal execute
 `pip3 install -r requirements.txt` to download all required packages. Once all
-packages have downloaded run `python3 Main.py` to begin running the program. On
-startup a config file will be generated and you will be prompted to enter a
+packages have downloaded, run `python3 Main.py` to begin running the program. On
+startup a config.ini file will be generated and you will be prompted to enter a
 [GroupMe API key](https://dev.groupme.com/). This key is INCREDIBLY important
 and should not be shared with ANYONE, the program will also not function without
 this. If you would like current weather capabilities you will also have to get
@@ -30,8 +27,11 @@ be a member of since the group will be accessed using your GroupMe API key.
 
 ## Capabilities
 
-The bot can post responses to commands given in the group chat if the message is
-directed to the bot. The bot will not look at any chats that do not directly
+**A list of possible commands can be viewed by simply directing a message saying
+"help" at the bot.**
+
+The bot can post responses to commands given in the group chat, if the message
+is directed to the bot. The bot will not look at any chats that do not directly
 mention it. It can also tell the time and weather in a given area by directing
 'time' or 'weather' in a message at the bot. For events and reminders the
 command scheme is a little more complicated. In the creation and deletion
@@ -54,7 +54,7 @@ event is occurring and what will be happening at said event.
 
 ### Create Reminder Parameters
 
-The structure of the parameters should be: `<day>, <reminder name>, <description>`.
+The structure of the parameters should be: `<day of the week>, <reminder name>, <description>`.
 This system is set up for weekly reminders and as such is associated with a day
 of the week instead of a date. As such the day should be given as either a
 standard abbreviation or the fully written out day of the week. The name of the
@@ -62,20 +62,9 @@ reminder should be given next, followed by a description of what is happening.
 Multiple reminders can be made for a single day of the week, but each reminder
 should have a unique name as to avoid any confusion in the deletion process.
 
-## Future plans
-
-I plan to move the interaction between the bot and users to a direct messaging
-system that only designated users will have access to. I also plan to try and
-make the bot capable of responding to basic questions as well as throw in a few
-fun little Easter eggs for possible responses.
-
 ## Current Bugs
 
-Too many to go into detail. This system is incredibly buggy and I am slowly
-figuring out bugs that I find in my testing, but chances are I will get tired of
-bug hunting and fixing and will stop all together for a bit and focus on
-features that I think would be cool to have, this is for my personal use after
-all.
+For any bugs found, please raise an issue in the Issue Tracker.
 
 ## Credit
 

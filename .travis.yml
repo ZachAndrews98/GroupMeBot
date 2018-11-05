@@ -22,3 +22,4 @@ install:
 # --> check the quality of the README file
 script:
   - mdl README.md
+  - pytest tests

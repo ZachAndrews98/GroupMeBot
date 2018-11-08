@@ -14,21 +14,10 @@ def check_date():
     # are, posts them
     Main.event_list.delete_event_before_date(
         datetime.date.today() - datetime.timedelta(1))
-    events = Main.event_list.get_events_by_date(datetime.date.today())
-    response = "Today's events:\n"
-    if len(events) != 0:
-        for event in events:
-            response += '-- ' + str(event)
-    else:
-        response += 'None'
-    reminders = Main.reminder_list.get_reminders_by_day(
-        datetime.datetime.today().weekday())
-    response += "\nToday's reminders:\n"
-    if len(reminders) != 0:
-        for reminder in reminders:
-            response += '-- ' + str(reminder)
-    else:
-        response += 'None'
+
+    # gets all events and reminders and adds them to response
+    response = list_events() + "\n" + list_reminders()
+
     Main.checked_events = True
     # checks if any events have expired
     if Main.checked_events and datetime.datetime.now() > Main.CHECK_TIME_END:
@@ -40,13 +29,15 @@ def check_date():
 def list_events():
     response = 'Events Today:\n'
     events = Main.event_list.get_events_by_date(datetime.date.today())
+    print(events)
     if len(events) != 0:
         for event in events:
             response += '-- ' + str(event)
     else:
         response += 'None\n'
-    response += 'Events:\n'
+    response += '\nEvents:\n'
     events = Main.event_list.get_event_list()
+    print(events)
     if len(events) != 0:
         for event in events:
             response += '-- ' + str(event)
@@ -77,6 +68,7 @@ def create_reminder(day, id, desc):
 def list_reminders():
     response = 'Reminders Today:\n'
     reminders = Main.reminder_list.get_reminders_by_day(datetime.date.today())
+    print(reminders)
     if len(reminders) != 0:
         for reminer in reminders:
             response += '-- ' + str(reminder) + '\n'
@@ -84,6 +76,7 @@ def list_reminders():
         response += 'None\n'
     response += 'Reminders: \n'
     reminders = Main.reminder_list.get_reminder_list()
+    print(reminders)
     if len(reminders) != 0:
         for reminder in reminders:
             response += '-- ' + str(reminder) + '\n'

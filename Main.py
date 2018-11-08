@@ -57,7 +57,6 @@ s = session.Session(KEYS.get_groupme_key())
 manager = bots.Bots(s)
 # stores the bot, assuming only 1 bot to keep track of, if more bots just add more
 # variables and increment the index
-# also assumes a bot has already been made through groupme developer website
 try:
     BOT = manager.list()[0]
 except BaseException:

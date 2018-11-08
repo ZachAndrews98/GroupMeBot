@@ -4,12 +4,14 @@
 file_name = '.reminders/reminders.rmndr'
 
 
+# list of reminders
 class reminder_list:
     reminders = list()
 
     def __init__(self):
         self.reminders.clear()
 
+    # adds new reminder
     def add_reminder(self, reminder):
         self.reminders.append(reminder)
         with open(file_name, 'a') as file:
@@ -17,6 +19,7 @@ class reminder_list:
         file.close()
         self.remove_blank_lines()
 
+    # deletes a specified reminder
     def delete_reminder(self, reminder_id):
         deleted = False
         with open(file_name, 'w+') as file:
@@ -29,14 +32,17 @@ class reminder_list:
         file.close()
         return deleted
 
+    # returns the list of reminders
     def get_reminder_list(self):
         return self.reminders
 
+    # returns a specific reminder
     def get_reminder(self, reminder_id):
         for reminder in self.reminders:
             if reminder.id == reminder_id:
                 return reminder
 
+    # returns a list of reminders for a specific day
     def get_reminders_by_day(self, day):
         reminder_list = list()
         for reminder in self.reminders:
@@ -44,6 +50,8 @@ class reminder_list:
                 reminder_list.append(reminder)
         return reminder_list
 
+    # run at startup, checks if any reminders are stored, if there are adds them
+    # to the list
     def check_for_reminders(self):
         # if storage file exists
         try:
@@ -61,6 +69,7 @@ class reminder_list:
             file.close()
             return
 
+    # removes blank lines in ./.reminders/reminders.rmndr
     def remove_blank_lines(self):
         with open(file_name) as filehandle:
             lines = filehandle.readlines()
@@ -72,6 +81,7 @@ class reminder_list:
         file.close()
 
 
+# reminder class, stores information about reminders
 class reminder:
     days = {
         'mon': 0,

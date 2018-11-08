@@ -7,9 +7,8 @@ import time
 
 file_name = '.events/event_list.evt'
 
+
 # list of events
-
-
 class event_list:
     event_list = list()
 
@@ -28,13 +27,13 @@ class event_list:
     def get_event_list(self):
         return self.event_list
 
-    # gets single event by name
+    # returns a single specified event
     def get_event(self, event_name):
         for event in self.event_list:
             if event.name == event_name:
                 return event
 
-    # gets all events on a certain date
+    # returns all events on a certain date
     def get_events_by_date(self, date):
         events = list()
         for event in self.event_list:
@@ -82,6 +81,7 @@ class event_list:
             file.close()
             return
 
+    # removes blank lines in ./.events/event_list.evt
     def remove_blank_lines(self):
         with open(file_name) as filehandle:
             lines = filehandle.readlines()
@@ -92,9 +92,8 @@ class event_list:
         filehandle.close()
         file.close()
 
+
 # event class, stores information about an event
-
-
 class event:
     name = None
     date = None

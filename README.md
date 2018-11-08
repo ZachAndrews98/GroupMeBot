@@ -2,15 +2,12 @@
 
 ## About
 
-Created by Zachary Andrews
-Github: ZachAndrews98
-
 Creates and runs a bot from the terminal for the GroupMe app. Uses [Groupy](https://github.com/rhgrant10/Groupy)
 to interface with GroupMe's API. Can post and read messages from the terminal.
 Will analyze any message using the '@' symbol and the name of the bot in the
 group. The bot can currently tell the time, weather, and create and keep track
 of events as well as reminders for the group. These are kept in files under
-`events/` or `reminders/` respectively. There is also a basic chatbot
+`.events/` or `.reminders/` respectively. There is also a basic chatbot
 implementation that uses the [ChatterBot](https://github.com/gunthercox/ChatterBot)
 library for basic back and forth conversation.
 

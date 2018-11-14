@@ -57,6 +57,9 @@ class reminder_list:
         try:
             file = open(file_name, 'r')
             for line in file:
+                line = line.replace("\n","")
+                if "\n" in line:
+                    print("\t\tTRUE")
                 line = line.split(':')
                 day = line[0].strip()
                 id = line[1].split('- ')[0].strip()

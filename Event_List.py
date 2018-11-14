@@ -70,6 +70,9 @@ class event_list:
         try:
             with open(file_name, 'r') as file:
                 for line in file:
+                    line = line.replace("\n","")
+                    if "\n" in line:
+                        print("\t\tTRUE")
                     line = line.split(', ')
                     date = line[0].split('/')
                     self.event_list.append(event(line[1], datetime.date(

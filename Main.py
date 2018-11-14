@@ -134,8 +134,11 @@ def run():
                 at_bot = '@' + Main.BOT.name
                 # checks if the bot is mentioned
                 if at_bot.lower() in text:
+                    # print(text)
                     Analyze.analyze_message(text, name)  # analyzes the message
                 Main.NEWEST_MESSAGE_ANALYZED_ID = current_message.id  # sets the new analyzed id
+            # if it is time to check for the day's events (8:30 by default) or
+            # if the bot just started
             if not Main.checked_events and datetime.datetime.now(
             ) > CHECK_TIME and datetime.datetime.now() < CHECK_TIME_END:
                 check_date()  # checks if any events have passed

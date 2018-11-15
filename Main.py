@@ -83,7 +83,7 @@ except BaseException:
             BOT = manager.create(bot_name, group_id)
             break
 # creates the message utility
-mess = messages.Messages(s, BOT.group_id)
+mess_util = messages.Messages(s, BOT.group_id)
 # stores the ids of the most recently analyzed/read message
 NEWEST_MESSAGE_READ_ID = None
 NEWEST_MESSAGE_ANALYZED_ID = None
@@ -127,7 +127,7 @@ def run():
     try:
         while True:
             # checks if there are any new messages
-            if mess.list_after(Main.NEWEST_MESSAGE_ANALYZED_ID) is not None:
+            if mess_util.list_after(Main.NEWEST_MESSAGE_ANALYZED_ID) is not None:
                 current_message = mess.list()[0]  # newest message
                 text = current_message.text.lower()
                 name = current_message.name
@@ -149,10 +149,10 @@ def run():
         # reads the chats that have not been read yet
         if command == 'read':
             Log.log_debug(str(datetime.datetime.now()) + " >> Messages Read")
-            if mess.list_after(Main.NEWEST_MESSAGE_READ_ID) is not None:
-                for m in mess.list_after(Main.NEWEST_MESSAGE_READ_ID):
+            if mess_util.list_after(Main.NEWEST_MESSAGE_READ_ID) is not None:
+                for m in mess_util.list_after(Main.NEWEST_MESSAGE_READ_ID):
                     print(m.name + ': ' + m.text)
-                Main.NEWEST_MESSAGE_READ_ID = mess.list()[0].id
+                Main.NEWEST_MESSAGE_READ_ID = mess_util.list()[0].id
         # post into the group as the bot
         elif command == 'post':
             message = str(

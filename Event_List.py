@@ -68,7 +68,7 @@ class event_list:
         try:
             with open(file_name, 'r') as file:
                 for line in file:
-                    line = line.replace("\n","")
+                    line = line.replace("\n", "")
                     if "\n" in line:
                         print("\t\tTRUE")
                     line = line.split(', ')

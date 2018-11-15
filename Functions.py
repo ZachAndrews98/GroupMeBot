@@ -29,7 +29,6 @@ def check_date():
 def list_events():
     response = 'Events Today:\n'
     events = Main.event_list.get_events_by_date(datetime.date.today())
-    print(events)
     if len(events) != 0:
         for event in events:
             response += '-- ' + str(event) + '\n'
@@ -37,7 +36,6 @@ def list_events():
         response += 'None\n'
     response += 'Events:\n'
     events = Main.event_list.get_event_list()
-    print(events)
     if len(events) != 0:
         for event in events:
             response += '-- ' + str(event) + '\n'
@@ -68,7 +66,6 @@ def create_reminder(day, id, desc):
 def list_reminders():
     response = 'Reminders Today:\n'
     reminders = Main.reminder_list.get_reminders_by_day(datetime.date.today())
-    print(reminders)
     if len(reminders) != 0:
         for reminer in reminders:
             response += '-- ' + str(reminder) + '\n'
@@ -76,7 +73,6 @@ def list_reminders():
         response += 'None\n'
     response += 'Reminders: \n'
     reminders = Main.reminder_list.get_reminder_list()
-    print(reminders)
     if len(reminders) != 0:
         for reminder in reminders:
             response += '-- ' + str(reminder) + '\n'

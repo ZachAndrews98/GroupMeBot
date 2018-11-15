@@ -139,7 +139,7 @@ def run():
                 Main.NEWEST_MESSAGE_ANALYZED_ID = current_message.id  # sets the new analyzed id
             if not Main.checked_events and datetime.datetime.now(
             ) > CHECK_TIME and datetime.datetime.now() < CHECK_TIME_END:
-                check_date()  # checks if any events have passed
+                Functions.check_date()  # checks if any events have passed
     # enters terminal command mode
     except KeyboardInterrupt:
         Log.log_debug(str(datetime.datetime.now()) + " >> KeyboardInterrupt")

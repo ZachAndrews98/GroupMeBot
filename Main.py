@@ -128,7 +128,7 @@ def run():
         while True:
             # checks if there are any new messages
             if mess_util.list_after(Main.NEWEST_MESSAGE_ANALYZED_ID) is not None:
-                current_message = mess.list()[0]  # newest message
+                current_message = mess_util.list()[0]  # newest message
                 text = current_message.text.lower()
                 name = current_message.name
                 at_bot = '@' + Main.BOT.name

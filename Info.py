@@ -55,7 +55,8 @@ def get_info(text):
                 CREATE_EVENT_INFO[0] + '\nFormat: ' + CREATE_EVENT_INFO[1]
         elif 'reminder' in text:
             response = 'Info: ' + \
-                CREATE_REMINDER_INFO[0] + '\nFormat: ' + CREATE_REMINDER_INFO[1]
+                CREATE_REMINDER_INFO[0] + '\nFormat: ' + \
+                CREATE_REMINDER_INFO[1]
         else:
             response = 'That is not a possible command'
     elif 'delete' in text:
@@ -64,7 +65,8 @@ def get_info(text):
                 DELETE_EVENT_INFO[0] + '\nFormat: ' + DELETE_EVENT_INFO[1]
         elif 'reminder' in text:
             response = 'Info: ' + \
-                DELETE_REMINDER_INFO[0] + '\nFormat: ' + DELETE_REMINDER_INFO[1]
+                DELETE_REMINDER_INFO[0] + '\nFormat: ' + \
+                DELETE_REMINDER_INFO[1]
         else:
             response = 'That is not a possible command'
     elif 'help' in text:

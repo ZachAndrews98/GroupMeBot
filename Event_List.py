@@ -2,8 +2,6 @@
 # Github: ZachAndrews98
 
 import datetime
-import os
-import time
 
 file_name = '.events/event_list.evt'
 

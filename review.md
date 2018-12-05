@@ -1,13 +1,13 @@
 ## Author: Zachary Andrews
-## Reviewer:
-### Date of the review:
-Inspection rate:
-Defect rate:
-Defect density:
+## Reviewer: Carson Quigley
+### Date of the review: 11/15/18
+Inspection rate: 1.5 hr
+Defect rate: 1.5 bugs/hr
+Defect density: ~0.00598802395209580838 (4 found, 668 lines of code)
 ### Checklist
-- [ ] Code Formatting
-- [ ] Coding Best Practices
-- [ ] Code Readability
-- [ ] Code Testability
-- [ ] Code Reliability
-- [ ] Usability
+- [X] Code Formatting
+- [X] Coding Best Practices
+- [X] Code Readability
+- [X] Code Testability
+- [X] Code Reliability
+- [X] Usability

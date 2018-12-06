@@ -4,7 +4,7 @@
 import Main
 import datetime
 import Event_List
-import Reminders
+import Reminder_List
 
 
 # checks to see if there are any events or reminders for the day and
@@ -56,7 +56,7 @@ def create_event(name, year, month, day, desc):
 
 # creates a new reminder and adds it to the list
 def create_reminder(day, id, desc):
-    Main.reminder_list.add_reminder(Reminders.reminder(day, id, desc))
+    Main.reminder_list.add_reminder(Reminder_List.reminder(day, id, desc))
     response = 'Okay I have created a reminder: ' + \
         str(Main.reminder_list.get_reminder(id))
     return response

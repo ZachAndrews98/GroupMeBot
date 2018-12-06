@@ -63,6 +63,13 @@ reminder should be given next, followed by a description of what is happening.
 Multiple reminders can be made for a single day of the week, but each reminder
 should have a unique name as to avoid any confusion in the deletion process.
 
+## Tests
+
+Currently there is only one test written which checks to ensure that flake8 is
+followed for all python3 code. To run this and any future tests use the command
+`pytest tests`, which will run the tests and then output if they all pass or
+which ones fail.
+
 ## Current Bugs
 
 For any bugs found, please raise an issue in the Issue Tracker.

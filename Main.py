@@ -57,7 +57,6 @@ s = session.Session(KEYS.get_groupme_key())
 manager = bots.Bots(s)
 # stores the bot, assuming only 1 bot to keep track of, if more bots just add more
 # variables and increment the index
-# also assumes a bot has already been made through groupme developer website
 try:
     BOT = manager.list()[0]
 except BaseException:
@@ -84,7 +83,7 @@ except BaseException:
             BOT = manager.create(bot_name, group_id)
             break
 # creates the message utility
-mess = messages.Messages(s, BOT.group_id)
+mess_util = messages.Messages(s, BOT.group_id)
 # stores the ids of the most recently analyzed/read message
 NEWEST_MESSAGE_READ_ID = None
 NEWEST_MESSAGE_ANALYZED_ID = None
@@ -128,18 +127,21 @@ def run():
     try:
         while True:
             # checks if there are any new messages
-            if mess.list_after(Main.NEWEST_MESSAGE_ANALYZED_ID) is not None:
-                current_message = mess.list()[0]  # newest message
+            if mess_util.list_after(Main.NEWEST_MESSAGE_ANALYZED_ID) is not None:
+                current_message = mess_util.list()[0]  # newest message
                 text = current_message.text.lower()
                 name = current_message.name
                 at_bot = '@' + Main.BOT.name
                 # checks if the bot is mentioned
                 if at_bot.lower() in text:
+                    # print(text)
                     Analyze.analyze_message(text, name)  # analyzes the message
                 Main.NEWEST_MESSAGE_ANALYZED_ID = current_message.id  # sets the new analyzed id
+            # if it is time to check for the day's events (8:30 by default) or
+            # if the bot just started
             if not Main.checked_events and datetime.datetime.now(
             ) > CHECK_TIME and datetime.datetime.now() < CHECK_TIME_END:
-                check_date()  # checks if any events have passed
+                Functions.check_date()  # checks if any events have passed
     # enters terminal command mode
     except KeyboardInterrupt:
         Log.log_debug(str(datetime.datetime.now()) + " >> KeyboardInterrupt")
@@ -147,10 +149,10 @@ def run():
         # reads the chats that have not been read yet
         if command == 'read':
             Log.log_debug(str(datetime.datetime.now()) + " >> Messages Read")
-            if mess.list_after(Main.NEWEST_MESSAGE_READ_ID) is not None:
-                for m in mess.list_after(Main.NEWEST_MESSAGE_READ_ID):
+            if mess_util.list_after(Main.NEWEST_MESSAGE_READ_ID) is not None:
+                for m in mess_util.list_after(Main.NEWEST_MESSAGE_READ_ID):
                     print(m.name + ': ' + m.text)
-                Main.NEWEST_MESSAGE_READ_ID = mess.list()[0].id
+                Main.NEWEST_MESSAGE_READ_ID = mess_util.list()[0].id
         # post into the group as the bot
         elif command == 'post':
             message = str(

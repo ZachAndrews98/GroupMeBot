@@ -65,9 +65,9 @@ def create_reminder(day, id, desc):
 # creates the output for current and future reminders
 def list_reminders():
     response = 'Reminders Today:\n'
-    reminders = Main.reminder_list.get_reminders_by_day(datetime.date.today())
+    reminders = Main.reminder_list.get_reminders_by_day(datetime.date.today().weekday())
     if len(reminders) != 0:
-        for reminer in reminders:
+        for reminder in reminders:
             response += '-- ' + str(reminder) + '\n'
     else:
         response += 'None\n'

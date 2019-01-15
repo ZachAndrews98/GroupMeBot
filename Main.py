@@ -15,7 +15,7 @@
 import KEYS
 import Log
 import Event_List
-import Reminders
+import Reminder_List
 import Analyze
 import Main
 import Functions
@@ -97,7 +97,7 @@ event_list = Event_List.event_list()
 # flag to determine if the events have been checked yet
 checked_events = False
 # stores reminders
-reminder_list = Reminders.reminder_list()
+reminder_list = Reminder_List.reminder_list()
 # possible commands for the terminal and the bot
 commands = [
     'help',
